@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin the Practice | Coaching</title>
+    <meta name="description" content="Build strength, clarity, and physical readiness. Coaching that trains your body and sharpens your judgment.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --warm-paper: #F8F6F3;
+            --sand-surface: #EBE8E3;
+            --stone-border: #D4CFC8;
+            --ink: #2A2D32;
+            --deep-forest: #20352B;
+            --slate: #4A5568;
+            --clay: #A38067;
+            --ember: #8B6B53;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
+            --space-5: 40px; --space-6: 48px; --space-8: 64px; --space-10: 80px;
+            --radius-sm: 2px; --radius-md: 4px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--warm-paper);
+            color: var(--ink);
+            line-height: 1.65;
+            font-size: 17px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            color: var(--deep-forest);
+            line-height: 1.25;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-2) var(--space-4);
+            background: var(--clay);
+            color: var(--warm-paper);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .btn-primary:hover {
+            background: var(--ember);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(163, 128, 103, 0.25);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: calc(var(--space-2) - 1px) calc(var(--space-4) - 1px);
+            background: transparent;
+            color: var(--deep-forest);
+            border: 1px solid var(--deep-forest);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-secondary:hover {
+            background: var(--deep-forest);
+            color: var(--warm-paper);
+            transform: translateY(-1px);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 var(--space-4); }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0;
+            padding: var(--space-3) var(--space-4);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; transition: all 0.3s ease;
+        }
+        nav.scrolled {
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--stone-border);
+        }
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            color: var(--deep-forest);
+            text-decoration: none;
+        }
+        .nav-link {
+            font-size: 0.875rem; color: var(--ink);
+            text-decoration: none; opacity: 0.7; transition: opacity 0.2s;
+        }
+        .nav-link:hover { opacity: 1; }
+
+        @media (max-width: 600px) {
+            nav { padding: var(--space-2) var(--space-3); }
+            .nav-logo { font-size: 1.125rem; }
+        }
+
+        /* Hero */
+        .hero {
+            position: relative; min-height: 55vh;
+            display: flex; align-items: flex-end; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%; height: 100%; object-fit: cover;
+            object-position: center top; filter: grayscale(10%) sepia(5%);
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(32,53,43,0.15) 0%, rgba(32,53,43,0.2) 30%,
+                rgba(248,246,243,0.92) 70%, var(--warm-paper) 100%);
+        }
+        .hero-content {
+            position: relative; z-index: 1; width: 100%;
+            padding: var(--space-10) var(--space-4) var(--space-8);
+            max-width: 1000px; margin: 0 auto;
+        }
+        .hero-label {
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.2em; color: var(--slate); margin-bottom: var(--space-2);
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
+            margin-bottom: var(--space-3); max-width: 700px;
+        }
+        .hero-intro {
+            font-size: 1.0625rem; color: var(--ink); opacity: 0.8;
+            line-height: 1.7; max-width: 580px; margin-bottom: var(--space-5);
+        }
+        .hero-cta { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+
+        @media (max-width: 600px) {
+            .hero { min-height: 65vh; }
+            .hero-content { padding: var(--space-8) var(--space-3) var(--space-6); }
+            .hero h1 { font-size: 1.75rem; }
+            .hero-intro { font-size: 0.9375rem; margin-bottom: var(--space-4); }
+            .hero-cta { flex-direction: column; align-items: flex-start; }
+            .container { padding: 0 var(--space-3); }
+        }
+
+        /* Video Section */
+        .video-section {
+            position: relative; height: 50vh; min-height: 300px; max-height: 500px;
+            overflow: hidden; background: var(--slate);
+        }
+        .video-bg {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: cover; object-position: 30% center;
+        }
+        .video-overlay {
+            position: absolute; inset: 0; pointer-events: none;
+            background: linear-gradient(to bottom,
+                var(--warm-paper) 0%, rgba(248,246,243,0) 15%,
+                rgba(32,53,43,0.1) 50%, rgba(248,246,243,0) 85%,
+                var(--sand-surface) 100%);
+        }
+        @media (max-width: 600px) {
+            .video-section { height: 40vh; min-height: 200px; max-height: 350px; }
+        }
+
+        /* Sections */
+        section { padding: var(--space-8) 0; }
+        @media (max-width: 600px) { section { padding: var(--space-5) 0; } }
+        .section-alt { background: var(--sand-surface); }
+        .section-header { margin-bottom: var(--space-4); }
+        .section-label {
+            font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.2em; color: var(--slate); margin-bottom: var(--space-1);
+        }
+        .section-header h2 { font-size: clamp(1.75rem, 3.5vw, 2.25rem); }
+
+        /* Principles - compact grid */
+        .principles-list {
+            display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3);
+        }
+        .principles-list .principle-card:last-child {
+            grid-column: 1 / -1;
+        }
+        .principle-card {
+            display: grid; grid-template-columns: auto 1fr; gap: var(--space-3);
+            padding: var(--space-3); background: var(--warm-paper);
+            border: 1px solid var(--stone-border); border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+        }
+        .principle-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .principle-number {
+            font-family: var(--font-display); font-size: 1.25rem;
+            color: var(--clay); opacity: 0.6; line-height: 1; min-width: 32px;
+        }
+        .principle-content h3 {
+            font-size: 1.0625rem; margin-bottom: 6px; color: var(--deep-forest);
+        }
+        .principle-content p {
+            color: var(--ink); opacity: 0.7; font-size: 0.875rem; line-height: 1.55;
+        }
+        @media (max-width: 600px) {
+            .principles-list { grid-template-columns: 1fr; }
+            .principles-list .principle-card:last-child { grid-column: auto; }
+        }
+
+        /* Process - horizontal steps */
+        .process-flow {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3);
+        }
+        .process-step {
+            text-align: center; padding: var(--space-3) var(--space-2);
+            background: var(--warm-paper); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md); transition: all 0.2s ease;
+        }
+        .process-step:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+        .process-step .step-num {
+            font-family: var(--font-display); font-size: 1.25rem;
+            color: var(--clay); opacity: 0.6; margin-bottom: 6px;
+        }
+        .process-step h3 { font-size: 1rem; margin-bottom: 6px; }
+        .process-step p { font-size: 0.8125rem; color: var(--ink); opacity: 0.65; line-height: 1.5; }
+        @media (max-width: 700px) { .process-flow { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .process-flow { grid-template-columns: 1fr; } }
+
+        /* Fit Grid */
+        .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+        @media (max-width: 700px) { .fit-grid { grid-template-columns: 1fr; } }
+        .fit-col {
+            padding: var(--space-3); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md); background: var(--warm-paper);
+        }
+        .fit-col.yes {
+            background: linear-gradient(135deg, rgba(76,130,99,0.12), rgba(76,130,99,0.06));
+            border-color: #4C8263; border-width: 2px;
+            box-shadow: 0 4px 16px rgba(76,130,99,0.12);
+        }
+        .fit-col:not(.yes) { opacity: 0.8; }
+        .fit-col h3 {
+            font-size: 0.75rem; font-weight: 600; font-family: var(--font-body);
+            margin-bottom: var(--space-2); text-transform: uppercase; letter-spacing: 0.12em;
+        }
+        .fit-col.yes h3 { color: #3D6B50; }
+        .fit-col:not(.yes) h3 { color: var(--ink); opacity: 0.6; }
+        .fit-col ul { list-style: none; }
+        .fit-col li {
+            padding: 6px 0 6px var(--space-3); font-size: 0.9375rem;
+            position: relative; line-height: 1.5;
+        }
+        .fit-col li::before {
+            content: ''; position: absolute; left: 0; top: 14px;
+            width: 6px; height: 6px; border-radius: 50%;
+        }
+        .fit-col.yes li::before { background: #4C8263; }
+        .fit-col:not(.yes) li::before { background: var(--stone-border); }
+        .fit-col:not(.yes) li { opacity: 0.7; }
+
+        /* Two Ways */
+        .ways-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-5); }
+        @media (max-width: 700px) { .ways-grid { grid-template-columns: 1fr; } }
+        .way-card {
+            padding: var(--space-4); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md); background: var(--sand-surface);
+        }
+        .way-card.primary {
+            background: linear-gradient(135deg, rgba(163,128,103,0.12), rgba(163,128,103,0.06));
+            border-color: var(--clay);
+        }
+        .way-card h3 { font-size: 1.125rem; margin-bottom: var(--space-2); }
+        .way-card p {
+            color: var(--ink); opacity: 0.75; font-size: 0.9375rem;
+            line-height: 1.6; margin-bottom: var(--space-3);
+        }
+
+        /* Reflections */
+        .reflections-grid { display: flex; flex-direction: column; gap: var(--space-3); }
+        .reflection {
+            padding: var(--space-3); background: var(--warm-paper);
+            border: 1px solid var(--stone-border); border-radius: var(--radius-md);
+            max-width: 700px;
+        }
+        .reflection blockquote {
+            font-family: var(--font-display); font-size: 1rem;
+            font-style: italic; color: var(--deep-forest); line-height: 1.6; margin: 0;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--deep-forest); color: var(--warm-paper);
+            text-align: center; padding: var(--space-10) var(--space-4);
+        }
+        .cta-section h2 {
+            color: var(--warm-paper); font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+            margin-bottom: var(--space-2);
+        }
+        .cta-section .subtitle {
+            color: rgba(248,246,243,0.6); max-width: 420px;
+            margin: 0 auto var(--space-5); font-size: 1rem;
+        }
+        .cta-buttons { display: flex; justify-content: center; gap: var(--space-2); flex-wrap: wrap; }
+        .cta-section .btn-primary { background: var(--clay); }
+        .cta-section .btn-primary:hover { background: #C48A6B; }
+        .cta-section .btn-secondary { border-color: rgba(248,246,243,0.3); color: var(--warm-paper); }
+        .cta-section .btn-secondary:hover { background: rgba(248,246,243,0.1); border-color: rgba(248,246,243,0.5); }
+        @media (max-width: 600px) {
+            .cta-section { padding: var(--space-6) var(--space-3); }
+            .cta-buttons { flex-direction: column; align-items: center; }
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--space-5) var(--space-4);
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: var(--space-2); border-top: 1px solid var(--stone-border);
+        }
+        .footer-tagline {
+            font-family: var(--font-display); font-style: italic;
+            color: var(--ink); opacity: 0.5;
+        }
+        .footer-links { display: flex; gap: var(--space-4); }
+        .footer-links a {
+            font-size: 0.8125rem; color: var(--ink); opacity: 0.5;
+            text-decoration: none; transition: opacity 0.2s;
+        }
+        .footer-links a:hover { opacity: 1; }
+        @media (max-width: 600px) {
+            footer { flex-direction: column; text-align: center; padding: var(--space-4) var(--space-3); }
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <a href="#" class="nav-logo">Justin the Practice</a>
+        <a href="#start" class="nav-link">Get Started</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=1600&h=900&fit=crop&crop=center" alt="Pine tree canopy looking up">
+        </div>
+        <div class="hero-content fade-up">
+            <p class="hero-label">Justin the Practice</p>
+            <h1>Your body is telling you something. Let's listen.</h1>
+            <p class="hero-intro">I help people build strength, clarity, and physical readiness — by training their body and sharpening the judgment to use it well.</p>
+            <div class="hero-cta">
+                <a href="#clarity-quiz" class="btn-primary">
+                    Find Out Where You Stand
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="https://calendly.com/justin-the-practice/clarity-call" target="_blank" class="btn-secondary">Book a Free Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backflip Video -->
+    <section class="video-section">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="backflip.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </section>
+
+    <!-- Core Principles — tightened -->
+    <section class="section-alt fade-up">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Foundation</p>
+                <h2>What Guides the Work</h2>
+            </div>
+            <div class="principles-list">
+                <div class="principle-card">
+                    <span class="principle-number">1</span>
+                    <div class="principle-content">
+                        <h3>Listen to the Body</h3>
+                        <p>Pain, fatigue, and energy aren't noise — they're data. We train by reading the signals, not ignoring them.</p>
+                    </div>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">2</span>
+                    <div class="principle-content">
+                        <h3>Start Where You Are</h3>
+                        <p>No fantasy versions of yourself. Training fits your actual life, capacity, and history — right now.</p>
+                    </div>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">3</span>
+                    <div class="principle-content">
+                        <h3>Simple Beats Clever</h3>
+                        <p>Fundamentals done consistently will always outperform complicated programs you can't sustain.</p>
+                    </div>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">4</span>
+                    <div class="principle-content">
+                        <h3>Quality Over Grind</h3>
+                        <p>How you move matters more than how hard you push. Intelligent effort builds more than brute force ever will.</p>
+                    </div>
+                </div>
+                <div class="principle-card">
+                    <span class="principle-number">5</span>
+                    <div class="principle-content">
+                        <h3>Strength Serves Life</h3>
+                        <p>We build strength so your body absorbs stress, moves with confidence, and stays capable for decades — not just next month.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process — compressed to 4 visual blocks -->
+    <section class="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">The Process</p>
+                <h2>How It Works</h2>
+            </div>
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <h3>Assess</h3>
+                    <p>We map where you actually are — movement, strength, recovery, stress, lifestyle.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <h3>Build</h3>
+                    <p>A plan shaped around your needs. Nothing random, everything intentional.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <h3>Execute</h3>
+                    <p>Train with purpose. Learn to read effort, tension, and when to push or pull back.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <h3>Adjust</h3>
+                    <p>Life changes. Your plan evolves. Rest is feedback, not failure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fit Check — shortened -->
+    <section class="section-alt fade-up" id="fit">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Fit Check</p>
+                <h2>Is This Right For You?</h2>
+            </div>
+            <div class="fit-grid">
+                <div class="fit-col yes">
+                    <h3>You're a good fit if you:</h3>
+                    <ul>
+                        <li>Want to feel capable and confident in your body</li>
+                        <li>Care about how you move, not just how you look</li>
+                        <li>Value long-term progress over quick fixes</li>
+                        <li>Are willing to slow down to move forward</li>
+                    </ul>
+                </div>
+                <div class="fit-col">
+                    <h3>Probably not the right fit if you:</h3>
+                    <ul>
+                        <li>Want a rapid transformation or challenge</li>
+                        <li>Prefer maximal intensity all the time</li>
+                        <li>Want a generic program with no adjustment</li>
+                        <li>Aren't open to modifying when life requires it</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Two Ways to Work Together -->
+            <div class="ways-grid">
+                <div class="way-card primary" id="clarity-quiz">
+                    <h3>Start with Clarity</h3>
+                    <p>Take a short assessment to understand where you are and what your next best step is. Free, self-guided, takes 3 minutes.</p>
+                    <a href="https://justinthepractice.involve.me/health-lifestyle-quiz" target="_blank" class="btn-primary">
+                        Get Training Clarity
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="way-card">
+                    <h3>Talk It Through</h3>
+                    <p>Book a free 30-minute clarity call. No pressure, no pitch. If it's not a fit, I'll tell you.</p>
+                    <a href="https://calendly.com/justin-the-practice/clarity-call" target="_blank" class="btn-secondary">Book a Free Call</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Reflections — kept tight -->
+    <section class="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Client Reflections</p>
+                <h2>What People Say</h2>
+            </div>
+            <div class="reflections-grid">
+                <div class="reflection">
+                    <blockquote>"I'm stronger, but more importantly, I understand my body better and feel confident navigating fatigue and recovery."</blockquote>
+                </div>
+                <div class="reflection">
+                    <blockquote>"This was the first time training felt sustainable. I stopped feeling like I had to push all the time."</blockquote>
+                </div>
+                <div class="reflection">
+                    <blockquote>"I came in wanting better fitness. I left with clarity, consistency, and a healthier relationship with training."</blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section" id="start">
+        <h2>Ready to train with intention?</h2>
+        <p class="subtitle">Start with the quiz or book a free call. Either way, you'll walk away with clarity.</p>
+        <div class="cta-buttons">
+            <a href="https://justinthepractice.involve.me/health-lifestyle-quiz" target="_blank" class="btn-primary">
+                Get Training Clarity
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://calendly.com/justin-the-practice/clarity-call" target="_blank" class="btn-secondary">Book a Free Call</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container">
+        <span class="footer-tagline">Justin the Practice</span>
+        <div class="footer-links">
+            <a href="#fit">Fit Check</a>
+            <a href="#start">Get Started</a>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                if (a.getAttribute('href') === '#') return;
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        document.querySelector('.hero-content')?.classList.add('visible');
+    </script>
+</body>
+</html>
