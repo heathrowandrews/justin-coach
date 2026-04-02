@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Practices & Resources | Justin the Practice</title>
+    <meta name="description" content="Structured tools to help you build clarity, consistency, and better decision-making around training, food, rest, and daily rhythms.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --warm-paper: #F8F6F3;
+            --sand-surface: #EBE8E3;
+            --stone-border: #D4CFC8;
+            --sand-tan: #C9BFB3;
+            --ink: #2A2D32;
+            --deep-forest: #20352B;
+            --slate: #4A5568;
+            --blue-gray: #64748B;
+            --sky-light: #94A3B8;
+            --sky-silver: #CBD5E1;
+            --clay: #A38067;
+            --ember: #8B6B53;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --space-1: 8px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 32px;
+            --space-5: 40px;
+            --space-6: 48px;
+            --space-8: 64px;
+            --radius-sm: 2px;
+            --radius-md: 4px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--warm-paper);
+            color: var(--ink);
+            line-height: 1.65;
+            font-size: 17px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            color: var(--deep-forest);
+            line-height: 1.25;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 var(--space-4);
+        }
+
+        /* Nav */
+        nav {
+            padding: var(--space-3) var(--space-4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--stone-border);
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            color: var(--deep-forest);
+            text-decoration: none;
+            letter-spacing: 0.01em;
+        }
+
+        .nav-back {
+            font-size: 0.875rem;
+            color: var(--ink);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .nav-back:hover { opacity: 1; }
+
+        /* Hero */
+        .hero {
+            padding: var(--space-8) 0 var(--space-6);
+            border-bottom: 1px solid var(--stone-border);
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--slate);
+            margin-bottom: var(--space-2);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4.5vw, 2.75rem);
+            margin-bottom: var(--space-3);
+            max-width: 700px;
+        }
+
+        .hero-intro {
+            font-size: 1.0625rem;
+            color: var(--ink);
+            opacity: 0.8;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .hero-intro p {
+            margin-bottom: var(--space-2);
+        }
+
+        .hero-intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Level Sections */
+        .level-section {
+            padding: var(--space-6) 0;
+            border-bottom: 1px solid var(--stone-border);
+        }
+
+        .level-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .level-header {
+            margin-bottom: var(--space-4);
+        }
+
+        .level-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: var(--space-1);
+        }
+
+        .level-label.beginner { color: #4C8263; }
+        .level-label.intermediate { color: var(--clay); }
+        .level-label.advanced { color: var(--deep-forest); }
+
+        .level-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .level-description {
+            color: var(--ink);
+            opacity: 0.7;
+            font-size: 0.9375rem;
+            max-width: 500px;
+            margin-top: var(--space-1);
+        }
+
+        /* Resource Grid */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-3);
+        }
+
+        .resource-card {
+            padding: var(--space-4);
+            background: var(--warm-paper);
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .resource-type {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--clay);
+            margin-bottom: var(--space-1);
+        }
+
+        .resource-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: var(--space-2);
+            color: var(--deep-forest);
+        }
+
+        .resource-card p {
+            color: var(--ink);
+            opacity: 0.7;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: var(--space-3);
+        }
+
+        .resource-card .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-2) var(--space-3);
+            background: transparent;
+            color: var(--deep-forest);
+            border: 1px solid var(--deep-forest);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: fit-content;
+        }
+
+        .resource-card .btn:hover {
+            background: var(--deep-forest);
+            color: var(--warm-paper);
+        }
+
+        .resource-card .btn.coming-soon {
+            opacity: 0.5;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--space-6) 0;
+            background: var(--sand-surface);
+            margin-top: var(--space-6);
+        }
+
+        .cta-box {
+            padding: var(--space-5);
+            background: var(--warm-paper);
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
+            max-width: 600px;
+        }
+
+        .cta-box h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-2);
+        }
+
+        .cta-box p {
+            color: var(--ink);
+            opacity: 0.75;
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            margin-bottom: var(--space-3);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-2) var(--space-4);
+            background: var(--clay);
+            color: var(--warm-paper);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--ember);
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            padding: var(--space-5) var(--space-4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+            border-top: 1px solid var(--stone-border);
+        }
+
+        .footer-tagline {
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--ink);
+            opacity: 0.5;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-4);
+        }
+
+        .footer-links a {
+            font-size: 0.8125rem;
+            color: var(--ink);
+            opacity: 0.5;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover { opacity: 1; }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            nav {
+                padding: var(--space-2) var(--space-3);
+            }
+
+            .nav-logo {
+                font-size: 1.125rem;
+            }
+
+            .hero {
+                padding: var(--space-6) 0 var(--space-5);
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-intro {
+                font-size: 0.9375rem;
+            }
+
+            .container {
+                padding: 0 var(--space-3);
+            }
+
+            .level-section {
+                padding: var(--space-5) 0;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resource-card {
+                padding: var(--space-3);
+            }
+
+            .cta-section {
+                padding: var(--space-5) 0;
+            }
+
+            .cta-box {
+                padding: var(--space-4);
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: var(--space-4) var(--space-3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">Justin the Practice</a>
+        <a href="../index.html" class="nav-back">← Back to main site</a>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <p class="hero-label">Guided Practices & Resources</p>
+            <h1>Tools for Clarity & Consistency</h1>
+            <div class="hero-intro">
+                <p>Structured guides designed to help you build better decision-making around training, food, rest, and daily rhythms.</p>
+                <p>These are time-bound tools intended to support progress, not replace coaching. Start where you are and build from there.</p>
+            </div>
+        </section>
+
+        <!-- Free Resources -->
+        <section class="level-section">
+            <div class="level-header">
+                <p class="level-label" style="color: var(--clay);">Free Resources</p>
+                <h2>Guides & Practices</h2>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <span class="resource-type">PDF Guide</span>
+                    <h3>Circadian Rhythm Check-in</h3>
+                    <p>A simple framework to assess and align your daily rhythms with your body's natural energy patterns.</p>
+                    <a href="#" class="btn coming-soon">Coming Soon</a>
+                </div>
+                <div class="resource-card">
+                    <span class="resource-type">PDF Guide</span>
+                    <h3>Nutrition Myths Debunked</h3>
+                    <p>Clear, evidence-based answers to the most common nutrition misconceptions that derail progress.</p>
+                    <a href="#" class="btn coming-soon">Coming Soon</a>
+                </div>
+                <div class="resource-card">
+                    <span class="resource-type">PDF Guide</span>
+                    <h3>Daily Mobility Practice</h3>
+                    <p>A repeatable movement routine designed to maintain joint health and movement quality with minimal time investment.</p>
+                    <a href="#" class="btn coming-soon">Coming Soon</a>
+                </div>
+                <div class="resource-card">
+                    <span class="resource-type">PDF Guide</span>
+                    <h3>High Protein Foundations Guide</h3>
+                    <p>Practical strategies to build and maintain adequate protein intake without overcomplicating your nutrition.</p>
+                    <a href="#" class="btn coming-soon">Coming Soon</a>
+                </div>
+                <div class="resource-card">
+                    <span class="resource-type">PDF Guide</span>
+                    <h3>Strength Minimus Baseline</h3>
+                    <p>A minimalist strength program designed to establish and maintain baseline strength with sustainable effort.</p>
+                    <a href="#" class="btn coming-soon">Coming Soon</a>
+                </div>
+                <div class="resource-card">
+                    <span class="resource-type">PDF Guide</span>
+                    <h3>8 Week Training Reset</h3>
+                    <p>A structured 8-week program to rebuild training consistency and reestablish a sustainable baseline.</p>
+                    <a href="#" class="btn coming-soon">Coming Soon</a>
+                </div>
+                <div class="resource-card">
+                    <span class="resource-type">Workbook</span>
+                    <h3>Relationship to Food Workbook</h3>
+                    <p>A guided workbook to examine and reshape your relationship with food, eating patterns, and nourishment.</p>
+                    <a href="#" class="btn coming-soon">Coming Soon</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h3>Want something more personalized?</h3>
+                <p>These resources are designed to support self-guided progress. If you're looking for depth, responsiveness, and ongoing guidance, one-on-one coaching may be a better fit.</p>
+                <a href="https://calendly.com/justin-the-practice/clarity-call" target="_blank" class="btn-primary">Book a Clarity Call</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container">
+        <span class="footer-tagline">Justin the Practice</span>
+        <div class="footer-links">
+            <a href="../index.html#principles">Principles</a>
+            <a href="../index.html#process">Process</a>
+            <a href="../index.html#next-step">Get Started</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Equipment Program | Justin</title>
+    <meta name="description" content="A 6-week home training program. Dumbbells, kettlebell, pull-up bar—that's it. $47.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-black: #111;
+            --color-dark: #1a1a1a;
+            --color-text: #333;
+            --color-secondary: #666;
+            --color-muted: #888;
+            --color-border: #e0e0e0;
+            --color-light: #f5f5f5;
+            --color-white: #fff;
+            --color-accent: #2d5a47;
+            --color-accent-light: #e8f0ec;
+            --font-serif: 'EB Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--color-white); color: var(--color-text); line-height: 1.7; }
+        h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--color-black); }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+
+        nav { padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); }
+        .nav-logo { font-family: var(--font-serif); font-size: 1.25rem; color: var(--color-black); text-decoration: none; }
+        .nav-back { font-size: 0.875rem; color: var(--color-secondary); text-decoration: none; }
+        .nav-back:hover { color: var(--color-black); }
+
+        .hero { padding: 5rem 0 3rem; border-bottom: 1px solid var(--color-border); }
+        .resource-type { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-accent); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+        .hero-price { font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-black); margin-bottom: 1.5rem; }
+        .hero-desc { font-size: 1.125rem; color: var(--color-secondary); max-width: 540px; }
+
+        .content { padding: 3rem 0; }
+        .content h2 { font-size: 1.5rem; margin-bottom: 1rem; margin-top: 2rem; }
+        .content h2:first-child { margin-top: 0; }
+        .content p { margin-bottom: 1rem; color: var(--color-secondary); }
+        .content ul { margin: 1rem 0 1rem 1.5rem; color: var(--color-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+
+        .equipment-list { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 2rem 0; }
+        .equipment-item { background: var(--color-light); padding: 1.25rem 1.5rem; border: 1px solid var(--color-border); font-size: 0.9375rem; color: var(--color-text); }
+
+        .cta-box { background: var(--color-light); border: 1px solid var(--color-border); padding: 2.5rem; margin: 3rem 0; text-align: center; }
+        .cta-box h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .cta-box p { color: var(--color-secondary); margin-bottom: 1.5rem; }
+
+        .btn { display: inline-block; padding: 1rem 2rem; background: var(--color-dark); color: var(--color-white); border: none; font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 500; cursor: pointer; text-decoration: none; }
+        .btn:hover { background: var(--color-black); }
+
+        footer { padding: 3rem 2rem; border-top: 1px solid var(--color-border); text-align: center; }
+        .footer-tagline { font-family: var(--font-serif); font-style: italic; color: var(--color-muted); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">Justin</a>
+        <a href="../index.html#resources" class="nav-back">← Back to programs</a>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <p class="resource-type">6-Week Program</p>
+            <h1>Minimal Equipment</h1>
+            <p class="hero-price">$47</p>
+            <p class="hero-desc">A complete home training program. No gym required—just a few basics and the will to show up.</p>
+        </section>
+
+        <section class="content">
+            <h2>Train Anywhere</h2>
+            <p>You don't need a gym to build real strength. This 6-week program is designed for people who train at home, travel frequently, or simply prefer to avoid crowded gyms.</p>
+            <p>Every workout uses the same simple setup. No complicated swaps or "if you don't have X, do Y" confusion.</p>
+
+            <h2>Equipment Needed</h2>
+            <div class="equipment-list">
+                <div class="equipment-item">Pair of dumbbells</div>
+                <div class="equipment-item">Kettlebell</div>
+                <div class="equipment-item">Pull-up bar</div>
+            </div>
+            <p>That's it. If you don't have a pull-up bar, I include alternatives using a door frame or resistance band.</p>
+
+            <h2>What's Included</h2>
+            <ul>
+                <li>6 weeks of programming (3–4 sessions/week)</li>
+                <li>30–40 minute workouts</li>
+                <li>Video demonstrations for every exercise</li>
+                <li>Progressive structure that builds week over week</li>
+                <li>Warm-up routines included</li>
+                <li>Printable workout sheets</li>
+            </ul>
+
+            <h2>Who It's For</h2>
+            <p>This program works for beginners through intermediates. It's ideal for busy people who want effective workouts without commuting to a gym. You should have space to move and basic equipment listed above.</p>
+        </section>
+
+        <div class="cta-box">
+            <h3>Get Minimal Equipment</h3>
+            <p>One payment, lifetime access. Start training at home today.</p>
+            <a href="#" class="btn" id="purchase-btn">Purchase for $47</a>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-tagline">Strong body. Clear mind. Wild heart.</p>
+    </footer>
+
+    <script>
+        document.getElementById('purchase-btn').addEventListener('click', e => {
+            e.preventDefault();
+            alert('Redirecting to checkout... (Demo - connect to payment processor)');
+        });
+    </script>
+</body>
+</html>

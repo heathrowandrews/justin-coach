@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYROX Prep | Justin</title>
+    <meta name="description" content="An 8-week conditioning plan for first-time HYROX competitors. Run, row, push, pull—prepared. $67.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-black: #111;
+            --color-dark: #1a1a1a;
+            --color-text: #333;
+            --color-secondary: #666;
+            --color-muted: #888;
+            --color-border: #e0e0e0;
+            --color-light: #f5f5f5;
+            --color-white: #fff;
+            --color-accent: #2d5a47;
+            --color-accent-light: #e8f0ec;
+            --font-serif: 'EB Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: var(--color-white); color: var(--color-text); line-height: 1.7; }
+        h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--color-black); }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+
+        nav { padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); }
+        .nav-logo { font-family: var(--font-serif); font-size: 1.25rem; color: var(--color-black); text-decoration: none; }
+        .nav-back { font-size: 0.875rem; color: var(--color-secondary); text-decoration: none; }
+        .nav-back:hover { color: var(--color-black); }
+
+        .hero { padding: 5rem 0 3rem; border-bottom: 1px solid var(--color-border); }
+        .resource-type { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-accent); margin-bottom: 1rem; }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+        .hero-price { font-family: var(--font-serif); font-size: 1.5rem; color: var(--color-black); margin-bottom: 1.5rem; }
+        .hero-desc { font-size: 1.125rem; color: var(--color-secondary); max-width: 540px; }
+
+        .content { padding: 3rem 0; }
+        .content h2 { font-size: 1.5rem; margin-bottom: 1rem; margin-top: 2rem; }
+        .content h2:first-child { margin-top: 0; }
+        .content p { margin-bottom: 1rem; color: var(--color-secondary); }
+        .content ul { margin: 1rem 0 1rem 1.5rem; color: var(--color-secondary); }
+        .content li { margin-bottom: 0.5rem; }
+
+        .stations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 2rem 0; }
+        .station { background: var(--color-light); padding: 1rem; border: 1px solid var(--color-border); text-align: center; font-size: 0.875rem; color: var(--color-secondary); }
+
+        .cta-box { background: var(--color-light); border: 1px solid var(--color-border); padding: 2.5rem; margin: 3rem 0; text-align: center; }
+        .cta-box h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+        .cta-box p { color: var(--color-secondary); margin-bottom: 1.5rem; }
+
+        .btn { display: inline-block; padding: 1rem 2rem; background: var(--color-dark); color: var(--color-white); border: none; font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 500; cursor: pointer; text-decoration: none; }
+        .btn:hover { background: var(--color-black); }
+
+        footer { padding: 3rem 2rem; border-top: 1px solid var(--color-border); text-align: center; }
+        .footer-tagline { font-family: var(--font-serif); font-style: italic; color: var(--color-muted); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="nav-logo">Justin</a>
+        <a href="../index.html#resources" class="nav-back">← Back to programs</a>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <p class="resource-type">8-Week Program</p>
+            <h1>HYROX Prep</h1>
+            <p class="hero-price">$67</p>
+            <p class="hero-desc">A focused conditioning plan for first-time HYROX competitors. Run, row, push, pull—show up prepared.</p>
+        </section>
+
+        <section class="content">
+            <h2>What Is HYROX?</h2>
+            <p>HYROX is a fitness race that combines 8km of running with 8 functional workout stations. It's challenging but accessible—and increasingly popular worldwide.</p>
+            <p>This program prepares you specifically for the demands of race day, so you can finish strong instead of just surviving.</p>
+
+            <h2>The 8 Stations</h2>
+            <div class="stations-grid">
+                <div class="station">SkiErg</div>
+                <div class="station">Sled Push</div>
+                <div class="station">Sled Pull</div>
+                <div class="station">Burpee Broad Jumps</div>
+                <div class="station">Rowing</div>
+                <div class="station">Farmers Carry</div>
+                <div class="station">Sandbag Lunges</div>
+                <div class="station">Wall Balls</div>
+            </div>
+
+            <h2>What's Included</h2>
+            <ul>
+                <li>8-week structured training plan (4–5 sessions/week)</li>
+                <li>Running programming built in</li>
+                <li>Station-specific technique videos</li>
+                <li>Pacing strategy for race day</li>
+                <li>Scaling options for limited equipment</li>
+                <li>Race week taper and prep guide</li>
+            </ul>
+
+            <h2>Who It's For</h2>
+            <p>This program is for first-time HYROX competitors or those who want to improve their finish time. You should have a baseline level of fitness—able to run 5K and do basic gym movements.</p>
+        </section>
+
+        <div class="cta-box">
+            <h3>Get HYROX Prep</h3>
+            <p>One payment, lifetime access. Show up to race day ready.</p>
+            <a href="#" class="btn" id="purchase-btn">Purchase for $67</a>
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer-tagline">Strong body. Clear mind. Wild heart.</p>
+    </footer>
+
+    <script>
+        document.getElementById('purchase-btn').addEventListener('click', e => {
+            e.preventDefault();
+            alert('Redirecting to checkout... (Demo - connect to payment processor)');
+        });
+    </script>
+</body>
+</html>
