@@ -268,9 +268,8 @@
             <div class="quiz-hero">
                 <p class="quiz-hero-label">Hyrox Readiness</p>
                 <h1>How Ready Are You for Hyrox?</h1>
-                <p>Whether you're eyeing your first Hyrox race or you want to compete stronger, this quiz gives you a clear picture of where you stand across the demands of the race.</p>
-                <p>No fluff. Just an honest look at your current readiness so you know exactly where to focus.</p>
-                <p class="quiz-time">Takes about 3 minutes. 12 questions.</p>
+                <p>Whether you're eyeing your first Hyrox race or looking to take your performance to the next level, this quiz gives you a clear picture of where you stand across the demands of the race.</p>
+                <p class="quiz-time">Takes about 3 minutes. 13 questions.</p>
             </div>
             <div style="text-align: center; padding-bottom: var(--space-8);">
                 <button class="btn-start" onclick="startQuiz()">
@@ -333,7 +332,7 @@
             id: "experience",
             label: "About You",
             question: "Have you done a Hyrox race before?",
-            context: "There's no wrong answer. First-timers and experienced racers both get value from understanding where their readiness stands right now.",
+            context: "Knowing where you're starting from helps shape the kind of preparation that makes sense.",
             type: "options",
             options: [
                 { text: "This will be my first", value: "first" },
@@ -430,15 +429,27 @@
             ]
         },
         {
-            category: "Grip & Loaded Carry",
+            category: "Farmer's Carry",
             weight: 0.75,
-            question: "Could you carry heavy farmer's handles or a loaded sandbag for 200 meters right now?",
-            context: "The farmer's carry and sandbag lunges test grip endurance and your ability to keep moving under load. People often underestimate how much these stations take out of you.",
+            question: "How confident are you carrying heavy farmer's carry handles for 200 meters?",
+            context: "The farmer's carry tests grip endurance and your ability to keep walking under heavy load. It sounds simple, but after several stations and runs, your grip and core are already taxed.",
             options: [
-                { text: "I'd probably have to stop multiple times or couldn't finish", score: 1 },
+                { text: "I've never done farmer's carries or would have to stop multiple times", score: 1 },
                 { text: "I could do it but my grip would fail before my legs", score: 2 },
-                { text: "I can carry heavy things but haven't trained it as a specific skill", score: 3 },
-                { text: "I train loaded carries regularly and my grip holds up", score: 4 }
+                { text: "I can carry heavy weight but haven't trained it as a specific skill", score: 3 },
+                { text: "I train farmer's carries regularly and my grip holds up", score: 4 }
+            ]
+        },
+        {
+            category: "Loaded Lunges",
+            weight: 0.75,
+            question: "How confident are you lunging 100 meters with a heavy sandbag on your shoulders?",
+            context: "Loaded lunges are one of the last stations in Hyrox. By the time you get here, your legs are already fatigued from running and every station before it. This tests leg endurance, balance, and mental resolve.",
+            options: [
+                { text: "I can barely do bodyweight lunges or haven't tried loaded ones", score: 1 },
+                { text: "I can do some loaded lunges but would need frequent stops over 100m", score: 2 },
+                { text: "I can lunge with weight but haven't trained it for this kind of distance", score: 3 },
+                { text: "I train loaded lunges regularly and can sustain them over long distances", score: 4 }
             ]
         },
         {
@@ -774,9 +785,13 @@
                 1: "Your body's ability to absorb training is the ceiling on everything else. Start here.",
                 2: "Building your recovery capacity will let you train harder and more often."
             },
-            "Grip & Loaded Carry": {
-                1: "Grip endurance is trainable but takes time. Start now so it's not a race-day surprise.",
+            "Farmer's Carry": {
+                1: "Grip endurance is trainable but takes time. Start building it now so it's not a race-day surprise.",
                 2: "Your grip is a weak link. Dedicated carry work 2x/week will close this gap."
+            },
+            "Loaded Lunges": {
+                1: "Loaded lunges are one of the hardest stations when your legs are already spent. Start training them now.",
+                2: "You can lunge, but building distance under load takes specific practice. Add these to your program."
             },
             "Mental Toughness & Pacing": {
                 1: "Learning to work through discomfort is a skill. It can be trained just like strength.",
@@ -826,11 +841,17 @@
                 3: "You have a good base. Make sure your easy days are truly easy and your hard days have purpose. Recovery is an active part of training, not just the absence of it.",
                 4: "Your recovery supports your training well. As you layer in Hyrox-specific work, monitor whether your existing habits still hold up. Heavier training blocks may demand more attention to rest and nutrition."
             },
-            "Grip & Loaded Carry": {
-                1: "Start with dead hangs, farmer's carries with light dumbbells, and holding heavy objects for time. Grip endurance is very trainable, but it takes consistent work. Start building it now." + (isDoubles ? " In Doubles, you can split carry stations strategically. But basic grip fitness helps everywhere." : ""),
-                2: "Your grip is a weak link. Add dedicated grip work: farmer's carries 2-3x per week, dead hangs after sessions, and towel-grip exercises. Train grip when you're already tired to simulate race conditions.",
-                3: "You can carry weight. Now add specificity: practice at race weights for the full distance. Focus on steady walking pace and finding a grip position that's efficient, not just strong.",
-                4: "This is a strength for you. Keep carries in your program and practice transitioning between carry stations and the next running segment smoothly."
+            "Farmer's Carry": {
+                1: "Start with dead hangs and farmer's carries with light dumbbells. Grip endurance is very trainable, but it takes consistent work over weeks. Start building it now." + (isDoubles ? " In Doubles, you can strategize who takes this station. But basic grip fitness helps everywhere." : ""),
+                2: "Your grip is the weak link. Add dedicated carry work: farmer's carries 2-3x per week, dead hangs after sessions, and towel-grip exercises. Train grip when you're already tired to simulate race conditions.",
+                3: "You can carry weight. Now add specificity: practice at race weights for the full 200m. Focus on steady walking pace and finding a grip position that's efficient, not just strong.",
+                4: "This is a strength for you. Keep carries in your program and practice transitioning from the carry into the next run smoothly."
+            },
+            "Loaded Lunges": {
+                1: "Start with bodyweight lunges and build volume before adding load. Walking lunges for distance is a specific skill that needs practice. Your legs will be exhausted by the time you reach this station on race day." + (isDoubles ? " In Doubles, you can strategize who takes lunges. But both partners benefit from having lunge endurance." : ""),
+                2: "You can lunge, but covering 100m under load requires specific endurance. Add weighted walking lunges to your program weekly and gradually increase distance before adding weight.",
+                3: "You have the movement. Now train it under fatigue: do loaded lunges at the end of sessions when your legs are already tired. That's what race day feels like.",
+                4: "Loaded lunges are a strength for you. Maintain this by keeping them in your program and practicing them after leg-heavy work so your body stays adapted to performing them fatigued."
             },
             "Mental Toughness & Pacing": {
                 1: "Start by practicing controlled discomfort. During hard efforts, focus on breathing and maintaining form rather than speed. Build your tolerance gradually. This is a trainable skill, not a personality trait." + (isFirst ? " First-time Hyrox athletes who learn to manage discomfort early have a dramatically better race experience." : ""),
