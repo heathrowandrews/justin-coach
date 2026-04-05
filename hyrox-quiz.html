@@ -6,7 +6,7 @@
     <title>Hyrox Readiness Quiz | Justin the Practice</title>
     <meta name="description" content="Find out how ready you are for your first (or next) Hyrox race. A quick self-assessment that shows you exactly where to focus your training.">
     <meta property="og:title" content="How Ready Are You for Hyrox?">
-    <meta property="og:description" content="Take this 2-minute quiz to find out where you stand and what to work on before race day.">
+    <meta property="og:description" content="Take this 3-minute quiz to find out where you stand and what to work on before race day.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://justinthepractice.com/hyrox-quiz.html">
 
@@ -28,15 +28,9 @@
             --ember: #8B6B53;
             --font-display: 'Playfair Display', Georgia, serif;
             --font-body: 'Source Sans 3', -apple-system, sans-serif;
-            --space-1: 8px;
-            --space-2: 16px;
-            --space-3: 24px;
-            --space-4: 32px;
-            --space-5: 40px;
-            --space-6: 48px;
-            --space-8: 64px;
-            --radius-sm: 2px;
-            --radius-md: 4px;
+            --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
+            --space-5: 40px; --space-6: 48px; --space-8: 64px;
+            --radius-sm: 2px; --radius-md: 4px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,7 +47,6 @@
 
         h1, h2, h3 { font-family: var(--font-display); font-weight: 400; color: var(--deep-forest); line-height: 1.25; }
 
-        /* Nav */
         nav {
             padding: var(--space-3) var(--space-4);
             display: flex;
@@ -65,189 +58,93 @@
         .nav-link { font-size: 0.875rem; color: var(--ink); text-decoration: none; opacity: 0.7; transition: opacity 0.2s; }
         .nav-link:hover { opacity: 1; }
 
-        /* Container */
         .container { max-width: 680px; margin: 0 auto; padding: 0 var(--space-4); }
 
         /* Hero */
-        .quiz-hero {
-            padding: var(--space-8) 0 var(--space-5);
-            text-align: center;
-        }
+        .quiz-hero { padding: var(--space-8) 0 var(--space-5); text-align: center; }
         .quiz-hero-label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--clay);
-            margin-bottom: var(--space-2);
+            font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.2em; color: var(--clay); margin-bottom: var(--space-2);
         }
-        .quiz-hero h1 {
-            font-size: clamp(1.75rem, 4vw, 2.5rem);
-            margin-bottom: var(--space-3);
-        }
-        .quiz-hero p {
-            color: var(--ink);
-            opacity: 0.75;
-            max-width: 520px;
-            margin: 0 auto var(--space-2);
-            line-height: 1.7;
-        }
-        .quiz-hero .quiz-time {
-            font-size: 0.8125rem;
-            color: var(--slate);
-            margin-top: var(--space-2);
-        }
+        .quiz-hero h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: var(--space-3); }
+        .quiz-hero p { color: var(--ink); opacity: 0.75; max-width: 520px; margin: 0 auto var(--space-2); line-height: 1.7; }
+        .quiz-hero .quiz-time { font-size: 0.8125rem; color: var(--slate); margin-top: var(--space-2); }
 
-        /* Progress Bar */
-        .progress-wrap {
-            padding: var(--space-2) 0 var(--space-4);
-        }
-        .progress-bar-bg {
-            height: 4px;
-            background: var(--sand-surface);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background: var(--clay);
-            border-radius: 2px;
-            transition: width 0.4s ease;
-            width: 0%;
-        }
-        .progress-label {
-            font-size: 0.75rem;
-            color: var(--slate);
-            margin-top: 6px;
-            text-align: right;
-        }
+        /* Progress */
+        .progress-wrap { padding: var(--space-2) 0 var(--space-4); }
+        .progress-bar-bg { height: 4px; background: var(--sand-surface); border-radius: 2px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: var(--clay); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+        .progress-label { font-size: 0.75rem; color: var(--slate); margin-top: 6px; text-align: right; }
 
         /* Question Card */
         .question-card {
-            background: var(--warm-paper);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-md);
-            padding: var(--space-5);
-            margin-bottom: var(--space-4);
+            background: var(--warm-paper); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md); padding: var(--space-5); margin-bottom: var(--space-4);
             animation: fadeIn 0.3s ease;
         }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
         .question-number {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--clay);
-            margin-bottom: var(--space-1);
+            font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.15em; color: var(--clay); margin-bottom: var(--space-1);
         }
         .question-text {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            color: var(--deep-forest);
-            margin-bottom: var(--space-3);
-            line-height: 1.4;
+            font-family: var(--font-display); font-size: 1.25rem; color: var(--deep-forest);
+            margin-bottom: var(--space-3); line-height: 1.4;
         }
         .question-context {
-            font-size: 0.875rem;
-            color: var(--slate);
-            margin-bottom: var(--space-3);
-            line-height: 1.5;
+            font-size: 0.875rem; color: var(--slate); margin-bottom: var(--space-3); line-height: 1.5;
         }
 
         /* Options */
         .options { display: flex; flex-direction: column; gap: var(--space-2); }
-
         .option {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-2);
-            padding: var(--space-2) var(--space-3);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-md);
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: flex; align-items: flex-start; gap: var(--space-2);
+            padding: var(--space-2) var(--space-3); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s ease;
             background: var(--warm-paper);
         }
-        .option:hover {
-            border-color: var(--clay);
-            background: rgba(163, 128, 103, 0.04);
-        }
-        .option.selected {
-            border-color: var(--clay);
-            background: rgba(163, 128, 103, 0.08);
-            box-shadow: 0 0 0 1px var(--clay);
-        }
+        .option:hover { border-color: var(--clay); background: rgba(163, 128, 103, 0.04); }
+        .option.selected { border-color: var(--clay); background: rgba(163, 128, 103, 0.08); box-shadow: 0 0 0 1px var(--clay); }
 
         .option-radio {
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--stone-border);
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 3px;
-            transition: all 0.2s ease;
-            position: relative;
+            width: 18px; height: 18px; border: 2px solid var(--stone-border);
+            border-radius: 50%; flex-shrink: 0; margin-top: 3px; transition: all 0.2s ease; position: relative;
         }
-        .option.selected .option-radio {
-            border-color: var(--clay);
-        }
+        .option.selected .option-radio { border-color: var(--clay); }
         .option.selected .option-radio::after {
-            content: '';
-            position: absolute;
-            top: 3px; left: 3px;
-            width: 8px; height: 8px;
-            background: var(--clay);
-            border-radius: 50%;
+            content: ''; position: absolute; top: 3px; left: 3px;
+            width: 8px; height: 8px; background: var(--clay); border-radius: 50%;
         }
+        .option-label { font-size: 0.9375rem; color: var(--ink); line-height: 1.5; }
 
-        .option-label {
-            font-size: 0.9375rem;
-            color: var(--ink);
-            line-height: 1.5;
+        /* Text input for context questions */
+        .text-input-wrap { margin-top: var(--space-2); }
+        .text-input {
+            width: 100%; padding: var(--space-2); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9375rem;
+            background: var(--warm-paper); color: var(--ink); transition: border-color 0.2s;
         }
+        .text-input:focus { outline: none; border-color: var(--clay); }
+        .text-input::placeholder { color: var(--slate); opacity: 0.5; }
+        .input-hint { font-size: 0.8125rem; color: var(--slate); margin-top: 6px; }
 
-        /* Navigation Buttons */
-        .quiz-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--space-2) 0 var(--space-8);
-        }
+        /* Nav Buttons */
+        .quiz-nav { display: flex; justify-content: space-between; align-items: center; padding: var(--space-2) 0 var(--space-8); }
         .btn-next, .btn-prev, .btn-start, .btn-results {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-1);
-            padding: var(--space-2) var(--space-4);
-            border: none;
-            border-radius: var(--radius-sm);
-            font-family: var(--font-body);
-            font-size: 0.9375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            display: inline-flex; align-items: center; gap: var(--space-1);
+            padding: var(--space-2) var(--space-4); border: none; border-radius: var(--radius-sm);
+            font-family: var(--font-body); font-size: 0.9375rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease;
         }
         .btn-next, .btn-start, .btn-results {
-            background: var(--clay);
-            color: var(--warm-paper);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: var(--clay); color: var(--warm-paper); box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .btn-next:hover, .btn-start:hover, .btn-results:hover {
-            background: var(--ember);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(163, 128, 103, 0.25);
+            background: var(--ember); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(163, 128, 103, 0.25);
         }
-        .btn-next:disabled, .btn-results:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-        .btn-prev {
-            background: transparent;
-            color: var(--slate);
-            border: 1px solid var(--stone-border);
-        }
+        .btn-next:disabled, .btn-results:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-prev { background: transparent; color: var(--slate); border: 1px solid var(--stone-border); }
         .btn-prev:hover { background: var(--sand-surface); }
 
         /* Results */
@@ -255,183 +152,93 @@
         .results-section.active { display: block; animation: fadeIn 0.5s ease; }
 
         .score-display {
-            text-align: center;
-            padding: var(--space-6) var(--space-4);
-            background: var(--sand-surface);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-md);
-            margin-bottom: var(--space-5);
+            text-align: center; padding: var(--space-6) var(--space-4);
+            background: var(--sand-surface); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md); margin-bottom: var(--space-5);
         }
-        .score-label {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--slate);
-            margin-bottom: var(--space-1);
-        }
-        .score-number {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 4.5rem);
-            color: var(--deep-forest);
-            line-height: 1;
-            margin-bottom: var(--space-1);
-        }
-        .score-out-of {
-            font-size: 0.875rem;
-            color: var(--slate);
-            margin-bottom: var(--space-3);
-        }
-        .score-tier {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--clay);
-            margin-bottom: var(--space-2);
-        }
-        .score-summary {
-            color: var(--ink);
-            opacity: 0.75;
-            max-width: 480px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
+        .score-label { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--slate); margin-bottom: var(--space-1); }
+        .score-number { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 4.5rem); color: var(--deep-forest); line-height: 1; margin-bottom: var(--space-1); }
+        .score-out-of { font-size: 0.875rem; color: var(--slate); margin-bottom: var(--space-3); }
+        .score-tier { font-family: var(--font-display); font-size: 1.5rem; color: var(--clay); margin-bottom: var(--space-2); }
+        .score-summary { color: var(--ink); opacity: 0.75; max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
-        /* Breakdown */
+        .context-note {
+            background: rgba(163, 128, 103, 0.06); border: 1px solid var(--sand-tan);
+            border-radius: var(--radius-md); padding: var(--space-3) var(--space-4);
+            margin-bottom: var(--space-5); font-size: 0.9375rem; color: var(--ink); line-height: 1.6;
+        }
+        .context-note strong { color: var(--deep-forest); }
+
         .breakdown { margin-bottom: var(--space-5); }
         .breakdown h2 { font-size: 1.5rem; margin-bottom: var(--space-3); }
-
         .breakdown-card {
-            padding: var(--space-4);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-md);
-            margin-bottom: var(--space-3);
-            background: var(--warm-paper);
+            padding: var(--space-4); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md); margin-bottom: var(--space-3); background: var(--warm-paper);
         }
-        .breakdown-card h3 {
-            font-size: 1.0625rem;
-            margin-bottom: var(--space-1);
-        }
-        .breakdown-bar-wrap {
-            height: 6px;
-            background: var(--sand-surface);
-            border-radius: 3px;
-            margin-bottom: var(--space-2);
-            overflow: hidden;
-        }
-        .breakdown-bar {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.8s ease;
-        }
+        .breakdown-card h3 { font-size: 1.0625rem; margin-bottom: var(--space-1); }
+        .breakdown-bar-wrap { height: 6px; background: var(--sand-surface); border-radius: 3px; margin-bottom: var(--space-2); overflow: hidden; }
+        .breakdown-bar { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
         .breakdown-bar.strong { background: #4C8263; }
         .breakdown-bar.moderate { background: var(--clay); }
         .breakdown-bar.needs-work { background: #C0705B; }
-
-        .breakdown-verdict {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: var(--space-1);
-        }
+        .breakdown-verdict { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: var(--space-1); }
         .breakdown-verdict.strong { color: #4C8263; }
         .breakdown-verdict.moderate { color: var(--clay); }
         .breakdown-verdict.needs-work { color: #C0705B; }
+        .breakdown-detail { font-size: 0.9375rem; color: var(--ink); opacity: 0.75; line-height: 1.6; }
 
-        .breakdown-detail {
-            font-size: 0.9375rem;
-            color: var(--ink);
-            opacity: 0.75;
-            line-height: 1.6;
+        .priority-section {
+            padding: var(--space-4); background: var(--sand-surface);
+            border: 1px solid var(--stone-border); border-radius: var(--radius-md);
+            margin-bottom: var(--space-5);
+        }
+        .priority-section h2 { font-size: 1.25rem; margin-bottom: var(--space-2); }
+        .priority-section p { font-size: 0.9375rem; color: var(--ink); opacity: 0.75; line-height: 1.6; margin-bottom: var(--space-2); }
+        .priority-list { list-style: none; }
+        .priority-list li {
+            padding: var(--space-1) 0 var(--space-1) var(--space-3); position: relative;
+            font-size: 0.9375rem; color: var(--ink); line-height: 1.5;
+        }
+        .priority-list li::before {
+            content: ''; position: absolute; left: 0; top: 14px;
+            width: 8px; height: 8px; border-radius: 50%; background: var(--clay);
         }
 
-        /* CTA */
         .results-cta {
-            text-align: center;
-            padding: var(--space-5);
+            text-align: center; padding: var(--space-5);
             background: linear-gradient(135deg, rgba(163, 128, 103, 0.1) 0%, rgba(163, 128, 103, 0.04) 100%);
-            border: 1px solid var(--clay);
-            border-radius: var(--radius-md);
-            margin-bottom: var(--space-5);
+            border: 1px solid var(--clay); border-radius: var(--radius-md); margin-bottom: var(--space-5);
         }
-        .results-cta h2 {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-2);
-        }
-        .results-cta p {
-            color: var(--ink);
-            opacity: 0.75;
-            max-width: 480px;
-            margin: 0 auto var(--space-4);
-            line-height: 1.7;
-        }
-        .results-cta .btn-next {
-            padding: var(--space-2) var(--space-5);
-            font-size: 1rem;
-        }
+        .results-cta h2 { font-size: 1.5rem; margin-bottom: var(--space-2); }
+        .results-cta p { color: var(--ink); opacity: 0.75; max-width: 480px; margin: 0 auto var(--space-4); line-height: 1.7; }
+        .results-cta .btn-next { padding: var(--space-2) var(--space-5); font-size: 1rem; text-decoration: none; }
 
-        /* Email capture */
         .email-capture {
-            padding: var(--space-4);
-            background: var(--sand-surface);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-md);
-            margin-bottom: var(--space-5);
+            padding: var(--space-4); background: var(--sand-surface);
+            border: 1px solid var(--stone-border); border-radius: var(--radius-md); margin-bottom: var(--space-5);
         }
         .email-capture h3 { font-size: 1.125rem; margin-bottom: var(--space-1); }
-        .email-capture p {
-            font-size: 0.9375rem;
-            color: var(--ink);
-            opacity: 0.7;
-            margin-bottom: var(--space-3);
-            line-height: 1.6;
-        }
-        .email-form {
-            display: flex;
-            gap: var(--space-2);
-        }
+        .email-capture p { font-size: 0.9375rem; color: var(--ink); opacity: 0.7; margin-bottom: var(--space-3); line-height: 1.6; }
+        .email-form { display: flex; gap: var(--space-2); }
         .email-form input {
-            flex: 1;
-            padding: var(--space-2);
-            border: 1px solid var(--stone-border);
-            border-radius: var(--radius-sm);
-            font-family: var(--font-body);
-            font-size: 0.9375rem;
-            background: var(--warm-paper);
+            flex: 1; padding: var(--space-2); border: 1px solid var(--stone-border);
+            border-radius: var(--radius-sm); font-family: var(--font-body); font-size: 0.9375rem; background: var(--warm-paper);
         }
         .email-form input:focus { outline: none; border-color: var(--clay); }
         .email-form button {
-            padding: var(--space-2) var(--space-3);
-            background: var(--deep-forest);
-            color: var(--warm-paper);
-            border: none;
-            border-radius: var(--radius-sm);
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s;
-            white-space: nowrap;
+            padding: var(--space-2) var(--space-3); background: var(--deep-forest); color: var(--warm-paper);
+            border: none; border-radius: var(--radius-sm); font-family: var(--font-body);
+            font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap;
         }
         .email-form button:hover { background: #2a4a3a; }
-        .email-success {
-            display: none;
-            color: #4C8263;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            padding: var(--space-2) 0;
-        }
+        .email-success { display: none; color: #4C8263; font-size: 0.9375rem; font-weight: 500; padding: var(--space-2) 0; }
 
-        /* Footer */
         footer {
-            padding: var(--space-5) var(--space-4);
-            border-top: 1px solid var(--stone-border);
-            text-align: center;
+            padding: var(--space-5) var(--space-4); border-top: 1px solid var(--stone-border); text-align: center;
         }
         .footer-tagline { font-family: var(--font-display); font-style: italic; color: var(--ink); opacity: 0.5; }
         .footer-powered { font-size: 0.75rem; color: var(--ink); opacity: 0.35; margin-top: var(--space-2); letter-spacing: 0.05em; }
 
-        /* Responsive */
         @media (max-width: 600px) {
             .container { padding: 0 var(--space-3); }
             .quiz-hero { padding: var(--space-5) 0 var(--space-4); }
@@ -445,7 +252,6 @@
             .nav-logo { font-size: 1.125rem; }
         }
 
-        /* Screens */
         .screen { display: none; }
         .screen.active { display: block; }
     </style>
@@ -456,15 +262,15 @@
         <a href="index.html#next-step" class="nav-link">Back to Site</a>
     </nav>
 
-    <!-- INTRO SCREEN -->
+    <!-- INTRO -->
     <div id="screen-intro" class="screen active">
         <div class="container">
             <div class="quiz-hero">
                 <p class="quiz-hero-label">Hyrox Readiness</p>
                 <h1>How Ready Are You for Hyrox?</h1>
-                <p>Whether you're eyeing your first Hyrox race or you want to compete stronger, this quiz gives you a clear picture of where you stand across the eight demands of the race.</p>
+                <p>Whether you're eyeing your first Hyrox race or you want to compete stronger, this quiz gives you a clear picture of where you stand across the demands of the race.</p>
                 <p>No fluff. Just an honest look at your current readiness so you know exactly where to focus.</p>
-                <p class="quiz-time">Takes about 2 minutes. 8 questions.</p>
+                <p class="quiz-time">Takes about 3 minutes. 12 questions.</p>
             </div>
             <div style="text-align: center; padding-bottom: var(--space-8);">
                 <button class="btn-start" onclick="startQuiz()">
@@ -475,16 +281,14 @@
         </div>
     </div>
 
-    <!-- QUIZ SCREEN -->
+    <!-- QUIZ -->
     <div id="screen-quiz" class="screen">
         <div class="container">
             <div class="progress-wrap">
                 <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
-                <div class="progress-label" id="progress-label">1 of 8</div>
+                <div class="progress-label" id="progress-label">1 of 12</div>
             </div>
-
             <div id="question-container"></div>
-
             <div class="quiz-nav">
                 <button class="btn-prev" id="btn-prev" onclick="prevQuestion()" style="visibility: hidden;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -498,7 +302,7 @@
         </div>
     </div>
 
-    <!-- RESULTS SCREEN -->
+    <!-- RESULTS -->
     <div id="screen-results" class="screen">
         <div class="container">
             <div class="results-section active" id="results-content"></div>
@@ -511,11 +315,65 @@
     </footer>
 
     <script>
-    const questions = [
+    // ── Context Questions (no scoring, inform results) ──
+    const contextQuestions = [
+        {
+            id: "format",
+            label: "About You",
+            question: "Are you planning to race Solo or Doubles?",
+            context: "This helps shape which parts of the race matter most for your preparation. Doubles splits the workload differently and changes the pacing strategy.",
+            type: "options",
+            options: [
+                { text: "Solo", value: "solo" },
+                { text: "Doubles", value: "doubles" },
+                { text: "Not sure yet", value: "unsure" }
+            ]
+        },
+        {
+            id: "experience",
+            label: "About You",
+            question: "Have you done a Hyrox race before?",
+            context: "There's no wrong answer. First-timers and experienced racers both get value from understanding where their readiness stands right now.",
+            type: "options",
+            options: [
+                { text: "This will be my first", value: "first" },
+                { text: "I've done one before", value: "one" },
+                { text: "I've done multiple", value: "multiple" }
+            ]
+        },
+        {
+            id: "timeline",
+            label: "About You",
+            question: "Do you have a race date in mind?",
+            type: "options",
+            context: "Knowing your timeline helps determine what kind of training block makes sense for where you are right now.",
+            options: [
+                { text: "Within the next 3 months", value: "3mo" },
+                { text: "3 to 6 months out", value: "6mo" },
+                { text: "More than 6 months away or no specific date", value: "none" }
+            ]
+        },
+        {
+            id: "goal",
+            label: "About You",
+            question: "What's your main goal for this race?",
+            context: "Your goal changes what matters most in your training. Finishing safely and competing for time require different preparation.",
+            type: "options",
+            options: [
+                { text: "Finish strong and enjoy the experience", value: "finish" },
+                { text: "Hit a specific time goal", value: "time" },
+                { text: "Compete seriously and push my limits", value: "compete" }
+            ]
+        }
+    ];
+
+    // ── Scored Questions (weighted) ──
+    const scoredQuestions = [
         {
             category: "Running Endurance",
+            weight: 1.5,
             question: "How comfortable are you running 8km (about 5 miles) without stopping?",
-            context: "Hyrox includes 8 x 1km running segments between stations. Your ability to sustain that pace while fatigued is a major factor.",
+            context: "Hyrox includes 8 x 1km running segments between stations. Your ability to sustain pace while fatigued is one of the biggest factors in your race.",
             options: [
                 { text: "I can't run 1km without walking", score: 1 },
                 { text: "I can run 2-3km but need breaks after that", score: 2 },
@@ -524,9 +382,10 @@
             ]
         },
         {
-            category: "Sled Push / Pull Strength",
+            category: "Sled Push & Pull",
+            weight: 1.0,
             question: "How would you rate your ability to push and pull heavy loads across a floor?",
-            context: "The sled push (152kg men / 102kg women) and sled pull are two of the most demanding Hyrox stations. Leg drive, hip position, and sustained effort matter here.",
+            context: "The sled push and sled pull are two of the most physically demanding Hyrox stations. Leg drive, hip position, and sustained effort matter here.",
             options: [
                 { text: "I've never pushed a sled or anything similar", score: 1 },
                 { text: "I've done it a few times but it wrecks me quickly", score: 2 },
@@ -536,8 +395,9 @@
         },
         {
             category: "Functional Strength",
+            weight: 1.0,
             question: "How do you feel about movements like wall balls, burpee broad jumps, and lunges under fatigue?",
-            context: "Hyrox stations include 75 wall balls, 80m burpee broad jumps, and 200m lunges (with a sandbag for some). These test muscular endurance and mental tolerance.",
+            context: "Hyrox stations include wall balls, burpee broad jumps, and sandbag lunges. These test muscular endurance and your ability to keep working when everything is tired.",
             options: [
                 { text: "Most of these movements are new to me", score: 1 },
                 { text: "I know them but can only do small sets before I need a long rest", score: 2 },
@@ -546,20 +406,22 @@
             ]
         },
         {
-            category: "Rowing / Ski Erg Conditioning",
+            category: "Rowing & Ski Erg",
+            weight: 1.25,
             question: "How much experience do you have with a rowing machine or SkiErg?",
-            context: "Hyrox includes a 1,000m row and 1,000m SkiErg. Technique and pacing on these machines can make or break your overall time.",
+            context: "Hyrox includes a 1,000m row and 1,000m SkiErg. Technique and pacing on these machines can save or cost you significant time and energy.",
             options: [
                 { text: "I've never used either machine", score: 1 },
-                { text: "I've tried them but don't have a consistent technique", score: 2 },
+                { text: "I've tried them but don't have consistent technique", score: 2 },
                 { text: "I use them occasionally and can maintain a steady pace", score: 3 },
-                { text: "I row/ski regularly and know how to pace for a 1km effort", score: 4 }
+                { text: "I row/ski regularly and know how to pace a 1km effort", score: 4 }
             ]
         },
         {
             category: "Recovery & Training Load",
-            question: "How does your body typically recover from a hard training session?",
-            context: "Hyrox is 60-90+ minutes of sustained effort. Your ability to recover between sessions during a training block (and between stations on race day) is critical.",
+            weight: 1.0,
+            question: "How does your body typically handle a hard training week?",
+            context: "Hyrox is 60-90+ minutes of sustained work. How well your body absorbs and recovers from training determines how much preparation you can handle leading into race day.",
             options: [
                 { text: "I'm usually sore for 3-4 days after anything intense", score: 1 },
                 { text: "I recover okay but have to be careful about back-to-back sessions", score: 2 },
@@ -568,31 +430,34 @@
             ]
         },
         {
-            category: "Grip & Carry Strength",
-            question: "Could you carry a heavy sandbag or farmer's carry handles for 200 meters right now?",
-            context: "The farmer's carry (2 x 24kg women / 2 x 32kg men) and sandbag lunges test grip endurance and loaded movement under fatigue. Many people underestimate these stations.",
+            category: "Grip & Loaded Carry",
+            weight: 0.75,
+            question: "Could you carry heavy farmer's handles or a loaded sandbag for 200 meters right now?",
+            context: "The farmer's carry and sandbag lunges test grip endurance and your ability to keep moving under load. People often underestimate how much these stations take out of you.",
             options: [
                 { text: "I'd probably have to stop multiple times or couldn't finish", score: 1 },
                 { text: "I could do it but my grip would fail before my legs", score: 2 },
                 { text: "I can carry heavy things but haven't trained it as a specific skill", score: 3 },
-                { text: "I train loaded carries regularly and my grip holds up well", score: 4 }
+                { text: "I train loaded carries regularly and my grip holds up", score: 4 }
             ]
         },
         {
             category: "Mental Toughness & Pacing",
+            weight: 1.25,
             question: "When things get really uncomfortable mid-workout, what happens?",
-            context: "Hyrox is as much a mental event as a physical one. The ability to stay composed, manage effort, and keep moving when everything hurts separates finishers from DNFs.",
+            context: "Hyrox is as much a mental event as a physical one. The ability to stay composed, manage effort, and keep moving when everything hurts is what separates people who race well from people who survive.",
             options: [
                 { text: "I tend to stop or significantly slow down when discomfort peaks", score: 1 },
-                { text: "I push through sometimes but I don't have a strategy for it", score: 2 },
+                { text: "I push through sometimes but I don't have a strategy for managing it", score: 2 },
                 { text: "I can tolerate discomfort but I tend to go too hard early and fade", score: 3 },
                 { text: "I know how to pace myself and can stay steady through sustained discomfort", score: 4 }
             ]
         },
         {
             category: "Training Consistency",
+            weight: 1.25,
             question: "Over the last 3 months, how consistent has your training been?",
-            context: "Hyrox readiness isn't built in a week. Consistent training over months is what builds the base you need for a race like this.",
+            context: "Hyrox readiness is built over weeks and months of consistent work. Where you are today is shaped by what you've been doing, not just what you can do on a good day.",
             options: [
                 { text: "I haven't been training regularly (less than 1x/week)", score: 1 },
                 { text: "I train 1-2 times per week but it's inconsistent", score: 2 },
@@ -602,8 +467,11 @@
         }
     ];
 
+    const allQuestions = [...contextQuestions, ...scoredQuestions];
+    const totalQ = allQuestions.length;
     let currentQ = 0;
-    let answers = new Array(questions.length).fill(null);
+    let answers = new Array(totalQ).fill(null);
+    let textAnswers = {};
 
     function startQuiz() {
         document.getElementById('screen-intro').classList.remove('active');
@@ -612,140 +480,253 @@
     }
 
     function renderQuestion() {
-        const q = questions[currentQ];
+        const q = allQuestions[currentQ];
+        const isContext = currentQ < contextQuestions.length;
         const container = document.getElementById('question-container');
 
-        container.innerHTML = `
-            <div class="question-card">
-                <div class="question-number">${q.category}</div>
-                <div class="question-text">${q.question}</div>
-                <div class="question-context">${q.context}</div>
+        let optionsHTML = '';
+        if (q.type === 'text') {
+            const val = textAnswers[q.id] || '';
+            optionsHTML = `
+                <div class="text-input-wrap">
+                    <input type="text" class="text-input" id="text-answer"
+                        placeholder="${q.placeholder || ''}" value="${val}"
+                        oninput="onTextInput(this.value)">
+                    ${q.hint ? `<div class="input-hint">${q.hint}</div>` : ''}
+                </div>
+            `;
+        } else {
+            optionsHTML = `
                 <div class="options">
-                    ${q.options.map((opt, i) => `
+                    ${(q.options).map((opt, i) => `
                         <div class="option ${answers[currentQ] === i ? 'selected' : ''}" onclick="selectOption(${i})">
                             <div class="option-radio"></div>
                             <div class="option-label">${opt.text}</div>
                         </div>
                     `).join('')}
                 </div>
+            `;
+        }
+
+        container.innerHTML = `
+            <div class="question-card">
+                <div class="question-number">${q.label || q.category}</div>
+                <div class="question-text">${q.question}</div>
+                ${q.context ? `<div class="question-context">${q.context}</div>` : ''}
+                ${optionsHTML}
             </div>
         `;
 
-        // Update progress
-        document.getElementById('progress-fill').style.width = ((currentQ + 1) / questions.length * 100) + '%';
-        document.getElementById('progress-label').textContent = `${currentQ + 1} of ${questions.length}`;
+        // Progress
+        document.getElementById('progress-fill').style.width = ((currentQ + 1) / totalQ * 100) + '%';
+        document.getElementById('progress-label').textContent = `${currentQ + 1} of ${totalQ}`;
 
-        // Update buttons
+        // Back button
         document.getElementById('btn-prev').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
 
+        // Next button
         const btnNext = document.getElementById('btn-next');
-        if (currentQ === questions.length - 1) {
+        if (currentQ === totalQ - 1) {
             btnNext.innerHTML = 'See My Results <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
             btnNext.onclick = showResults;
         } else {
             btnNext.innerHTML = 'Next <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
             btnNext.onclick = nextQuestion;
         }
-        btnNext.disabled = answers[currentQ] === null;
+
+        // Enable/disable
+        if (q.type === 'text') {
+            btnNext.disabled = !(textAnswers[q.id] && textAnswers[q.id].trim().length > 0);
+        } else {
+            btnNext.disabled = answers[currentQ] === null;
+        }
     }
 
     function selectOption(idx) {
         answers[currentQ] = idx;
-        document.querySelectorAll('.option').forEach((el, i) => {
-            el.classList.toggle('selected', i === idx);
-        });
+        document.querySelectorAll('.option').forEach((el, i) => el.classList.toggle('selected', i === idx));
         document.getElementById('btn-next').disabled = false;
     }
 
+    function onTextInput(val) {
+        const q = allQuestions[currentQ];
+        textAnswers[q.id] = val;
+        document.getElementById('btn-next').disabled = !val.trim();
+    }
+
     function nextQuestion() {
-        if (answers[currentQ] === null) return;
-        if (currentQ < questions.length - 1) {
-            currentQ++;
-            renderQuestion();
-        }
+        if (currentQ < totalQ - 1) { currentQ++; renderQuestion(); }
     }
 
     function prevQuestion() {
-        if (currentQ > 0) {
-            currentQ--;
-            renderQuestion();
-        }
+        if (currentQ > 0) { currentQ--; renderQuestion(); }
+    }
+
+    function getContextValue(id) {
+        const idx = contextQuestions.findIndex(q => q.id === id);
+        if (idx === -1 || answers[idx] === null) return null;
+        const q = contextQuestions[idx];
+        if (q.type === 'text') return textAnswers[id] || null;
+        return q.options[answers[idx]].value;
+    }
+
+    function getContextLabel(id) {
+        const idx = contextQuestions.findIndex(q => q.id === id);
+        if (idx === -1 || answers[idx] === null) return null;
+        const q = contextQuestions[idx];
+        if (q.type === 'text') return textAnswers[id] || null;
+        return q.options[answers[idx]].text;
     }
 
     function showResults() {
-        if (answers.some(a => a === null)) return;
-
         document.getElementById('screen-quiz').classList.remove('active');
         document.getElementById('screen-results').classList.add('active');
 
-        // Calculate scores
-        const categoryScores = questions.map((q, i) => ({
-            category: q.category,
-            score: q.options[answers[i]].score,
-            max: 4
-        }));
+        // Context
+        const format = getContextValue('format');
+        const experience = getContextValue('experience');
+        const timeline = getContextValue('timeline');
+        const goal = getContextValue('goal');
 
-        const totalScore = categoryScores.reduce((sum, c) => sum + c.score, 0);
-        const maxScore = categoryScores.length * 4;
-        const pct = Math.round((totalScore / maxScore) * 100);
+        // Scores (weighted)
+        const ctxLen = contextQuestions.length;
+        const categoryScores = scoredQuestions.map((q, i) => {
+            const ansIdx = answers[ctxLen + i];
+            const rawScore = q.options[ansIdx].score;
+            return {
+                category: q.category,
+                rawScore: rawScore,
+                weight: q.weight,
+                weightedScore: rawScore * q.weight,
+                maxWeighted: 4 * q.weight
+            };
+        });
 
-        // Determine tier
-        let tier, tierSummary, tierCta;
+        const totalWeighted = categoryScores.reduce((s, c) => s + c.weightedScore, 0);
+        const maxWeighted = categoryScores.reduce((s, c) => s + c.maxWeighted, 0);
+        const pct = Math.round((totalWeighted / maxWeighted) * 100);
+
+        // Display score as simple number out of 100
+        const displayScore = pct;
+
+        // Tier
+        let tier, tierSummary;
         if (pct >= 85) {
             tier = "Race Ready";
-            tierSummary = "You have a strong foundation across the board. Your training history and physical capacity suggest you could compete in a Hyrox race with focused preparation. The work now is about sharpening race-specific skills and dialing in your pacing strategy.";
-            tierCta = "Even strong athletes leave time on the table without a race plan. A focused training block could be the difference between finishing and finishing well.";
+            tierSummary = "You have a strong foundation across the board. With focused, race-specific preparation you could show up on race day with real confidence. The work from here is about sharpening what you already have.";
         } else if (pct >= 65) {
             tier = "Solid Foundation";
-            tierSummary = "You have real fitness and some of the right skills. With targeted training on your weaker areas, you could be race-ready in 8-12 weeks. The gaps are fixable and specific. You're closer than you think.";
-            tierCta = "You have the base. What you need is a plan that fills the gaps without burning you out. That's exactly what structured Hyrox coaching is built for.";
+            tierSummary = "You have real fitness and some of the right skills in place. The gaps are specific and fixable. With targeted training on your weaker areas, you could be race-ready in a focused training block.";
         } else if (pct >= 45) {
             tier = "Building Phase";
-            tierSummary = "You have a real starting point and some honest work ahead. The good news: Hyrox rewards consistency and smart training over raw talent. With the right structure, 12-16 weeks of focused work could get you to the start line ready.";
-            tierCta = "This is the stage where having a coach matters most. The right program keeps you progressing without injury and builds exactly the capacity Hyrox demands.";
+            tierSummary = "You have a real starting point and some honest work ahead. The good news: Hyrox rewards consistency and smart training over raw talent. With the right structure, a focused training block could get you to the start line feeling genuinely prepared.";
         } else {
-            tier = "Starting Line";
-            tierSummary = "Hyrox is a serious physical challenge, and being honest about where you are is the first step toward getting there. You have work to do across several areas, but every single Hyrox athlete started somewhere. With the right approach, this is absolutely within reach.";
-            tierCta = "Starting from here means you have the most to gain from structured coaching. Building the right foundation now prevents setbacks later and makes the whole journey more sustainable.";
+            tier = "Ground Floor";
+            tierSummary = "Hyrox is a serious physical challenge, and being honest about where you are is the first step. You have work to do across several areas, but every Hyrox athlete started somewhere. With the right approach, this is absolutely within reach.";
         }
 
-        // Build breakdown HTML
+        // Context-aware summary
+        let contextNote = '';
+        const formatLabel = format === 'doubles' ? 'Doubles' : format === 'solo' ? 'Solo' : null;
+        const expLabel = experience === 'first' ? "your first Hyrox" : experience === 'one' ? "your second Hyrox" : experience === 'multiple' ? "another Hyrox" : null;
+        const goalLabel = goal === 'finish' ? "finishing strong" : goal === 'time' ? "hitting a time goal" : goal === 'compete' ? "competing seriously" : null;
+
+        let contextParts = [];
+        if (formatLabel) contextParts.push(`racing <strong>${formatLabel}</strong>`);
+        if (expLabel) contextParts.push(`preparing for <strong>${expLabel}</strong>`);
+        if (goalLabel) contextParts.push(`focused on <strong>${goalLabel}</strong>`);
+
+        if (contextParts.length > 0) {
+            contextNote = `<div class="context-note">Based on your answers: you're ${contextParts.join(', ')}. `;
+
+            if (format === 'doubles') {
+                contextNote += "Racing Doubles changes the strategy. You'll split the workout stations with your partner, which means each of you hits fewer stations but still runs all 8km. Your running endurance and pacing become even more critical, while station-specific strength is shared.";
+            } else if (format === 'solo') {
+                contextNote += "Racing Solo means you own every station and every run. There's nowhere to hide and no one to split the work with. Your weakest area will be the one that slows you down most.";
+            }
+
+            if (timeline === '3mo') {
+                contextNote += " With a race in the next 3 months, your training needs to be focused and efficient. There's enough time to make real progress, but not enough to waste on the wrong priorities.";
+            } else if (timeline === '6mo') {
+                contextNote += " With 3-6 months to prepare, you have a solid runway. That's enough time to build real capacity if you train with intention.";
+            } else {
+                contextNote += " Without a fixed date, you have the luxury of building your base properly before committing to a race.";
+            }
+
+            contextNote += '</div>';
+        }
+
+        // Sort categories by score to find priorities
+        const sorted = [...categoryScores].sort((a, b) => a.rawScore - b.rawScore);
+        const weakest = sorted.filter(c => c.rawScore <= 2);
+        const moderate = sorted.filter(c => c.rawScore === 3);
+
+        // Build priority list
+        let priorityHTML = '';
+        if (weakest.length > 0 || moderate.length > 0) {
+            const priorityItems = weakest.length > 0 ? weakest : moderate.slice(0, 3);
+            priorityHTML = `
+                <div class="priority-section">
+                    <h2>Where to Focus First</h2>
+                    <p>Based on your scores, these are the areas that will make the biggest difference in your readiness:</p>
+                    <ul class="priority-list">
+                        ${priorityItems.map(c => `<li><strong>${c.category}</strong> — ${getPriorityNote(c.category, c.rawScore, format, goal)}</li>`).join('')}
+                    </ul>
+                    ${format === 'doubles' && weakest.some(w => ['Sled Push & Pull', 'Functional Strength', 'Grip & Loaded Carry'].includes(w.category))
+                        ? '<p style="margin-top: var(--space-2); font-style: italic;">In Doubles, some station weaknesses can be offset by your partner\'s strengths. But your running and conditioning need to be solid regardless.</p>'
+                        : ''}
+                </div>
+            `;
+        }
+
+        // Breakdown
         const breakdownHTML = categoryScores.map(c => {
-            const barPct = (c.score / c.max) * 100;
+            const barPct = (c.rawScore / 4) * 100;
             let verdict, barClass;
-            if (c.score >= 4) { verdict = "Strong"; barClass = "strong"; }
-            else if (c.score >= 3) { verdict = "Moderate"; barClass = "moderate"; }
+            if (c.rawScore >= 4) { verdict = "Strong"; barClass = "strong"; }
+            else if (c.rawScore >= 3) { verdict = "Moderate"; barClass = "moderate"; }
             else { verdict = "Needs Work"; barClass = "needs-work"; }
-
-            const tips = getCategoryTip(c.category, c.score);
-
+            const tip = getCategoryTip(c.category, c.rawScore, format, experience, goal);
             return `
                 <div class="breakdown-card">
                     <h3>${c.category}</h3>
                     <div class="breakdown-bar-wrap"><div class="breakdown-bar ${barClass}" style="width: ${barPct}%"></div></div>
                     <div class="breakdown-verdict ${barClass}">${verdict}</div>
-                    <div class="breakdown-detail">${tips}</div>
+                    <div class="breakdown-detail">${tip}</div>
                 </div>
             `;
         }).join('');
 
+        // CTA text based on tier
+        let ctaText;
+        if (pct >= 65) {
+            ctaText = "You have a strong base. The right coaching turns that into a race plan that gets results. Let's talk about what a focused training block would look like for you.";
+        } else if (pct >= 45) {
+            ctaText = "This is exactly the stage where having a coach matters most. The right program fills your gaps without burning you out and builds exactly the capacity Hyrox demands.";
+        } else {
+            ctaText = "Starting from here means you have the most to gain from structured coaching. Building the right foundation now prevents setbacks later and makes the whole journey more sustainable.";
+        }
+
         document.getElementById('results-content').innerHTML = `
             <div class="score-display">
                 <div class="score-label">Your Hyrox Readiness</div>
-                <div class="score-number">${totalScore}</div>
-                <div class="score-out-of">out of ${maxScore}</div>
+                <div class="score-number">${displayScore}</div>
+                <div class="score-out-of">out of 100</div>
                 <div class="score-tier">${tier}</div>
                 <div class="score-summary">${tierSummary}</div>
             </div>
 
+            ${contextNote}
+            ${priorityHTML}
+
             <div class="breakdown">
-                <h2>Your Breakdown</h2>
+                <h2>Full Breakdown</h2>
                 ${breakdownHTML}
             </div>
 
             <div class="results-cta">
-                <h2>What's Your Next Move?</h2>
-                <p>${tierCta}</p>
+                <h2>Ready to Train With Purpose?</h2>
+                <p>${ctaText}</p>
                 <a href="https://calendly.com/justin-the-practice/clarity-call" target="_blank" class="btn-next" style="text-decoration: none;">
                     Book a Free Clarity Call
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -754,13 +735,13 @@
             </div>
 
             <div class="email-capture">
-                <h3>Want a custom training focus?</h3>
-                <p>Drop your email and I'll send you a personalized breakdown based on your results, including specific exercises and training priorities for your weakest areas.</p>
+                <h3>Want a deeper look at your results?</h3>
+                <p>Drop your email and I'll send you a personalized training focus based on your quiz results, including what to prioritize in your next training block.</p>
                 <div class="email-form" id="email-form">
                     <input type="email" id="capture-email" placeholder="your@email.com" />
                     <button onclick="captureEmail()">Send My Plan</button>
                 </div>
-                <div class="email-success" id="email-success">Got it! Check your inbox in the next 24 hours.</div>
+                <div class="email-success" id="email-success">Got it! Check your inbox soon.</div>
             </div>
 
             <div style="text-align: center; padding: var(--space-4) 0;">
@@ -768,66 +749,100 @@
             </div>
         `;
 
-        // Animate bars after render
-        setTimeout(() => {
-            document.querySelectorAll('.breakdown-bar').forEach(bar => {
-                bar.style.width = bar.style.width; // trigger reflow
-            });
-        }, 100);
-
-        // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function getCategoryTip(category, score) {
-        const tips = {
+    function getPriorityNote(category, score, format, goal) {
+        const notes = {
             "Running Endurance": {
-                1: "Start with a walk-run program. Build up to running 2km continuously, then progress from there. Hyrox running doesn't need to be fast, but you need to sustain it across 8 segments.",
-                2: "You have a base to work with. Focus on extending your comfortable running distance by 10-15% each week. Add easy-pace longer runs once a week.",
-                3: "You can run the distance. Now train for running under fatigue: practice running immediately after strength work to simulate race conditions.",
-                4: "Your running is solid. Focus on pacing strategy and maintaining speed after stations. Practice negative splits on your 1km repeats."
+                1: "This is your biggest limiter. Building a running base is step one.",
+                2: "Your running needs the most attention. Extending your comfortable distance will change everything."
             },
-            "Sled Push / Pull Strength": {
-                1: "Start with leg press, hip sled, or even pushing a car in a parking lot. The movement pattern is hip extension and leg drive. Build familiarity with heavy pushing before adding speed.",
-                2: "You know the feeling. Now build specific strength: heavy sled pushes for short distances (20-30m), rest, repeat. Focus on low hip position and driving through your legs.",
-                3: "Add sled work 1-2x per week. Practice at race weight if possible. The key is learning to stay low and maintain speed when fatigue is screaming at you to stand up.",
-                4: "You're strong here. Refine your technique for efficiency and practice transitioning from run to sled with minimal rest. Race simulation work is your edge."
+            "Sled Push & Pull": {
+                1: "Heavy pushing and pulling is a skill you haven't built yet. Start building it now.",
+                2: "You've felt it but haven't trained it. Consistent sled work will close this gap fast."
             },
             "Functional Strength": {
-                1: "Learn the movements first with light weight and low reps. Wall balls with a light med ball, walking lunges with bodyweight, and basic burpees. Build movement quality before volume.",
-                2: "Build volume gradually. Set a timer and practice working through small sets with short rest (e.g., 10 wall balls every 45 seconds). The goal is sustainable output, not max effort.",
-                3: "You know the movements. Now train them in fatigued states. Practice stations back-to-back with running between them. Your body needs to learn to perform these when it's already tired.",
-                4: "You're well prepared. Focus on race-specific pacing for each station. Know your target times and rep strategies. Practice the full sequence in training."
+                1: "These movements are foundational to Hyrox. Learn them properly before adding volume.",
+                2: "You know the movements but need more capacity. Volume under fatigue is the focus."
             },
-            "Rowing / Ski Erg Conditioning": {
-                1: "Watch technique videos for the rowing machine and SkiErg. Bad technique wastes huge amounts of energy. Start with 500m efforts focusing on form, then build to 1,000m.",
-                2: "Technique is your biggest lever here. Spend time on smooth, powerful strokes rather than fast ones. Practice 1,000m pieces at a sustainable pace and track your splits.",
-                3: "You can do the distance. Now refine your pacing. Try 1,000m pieces where you hold the same split for every 250m. Consistency beats going out fast and dying.",
-                4: "Strong. Integrate these into longer training sessions where you row/ski after other movements. Race day isn't about a fresh 1,000m PR, it's about a smart 1,000m when you're already cooked."
+            "Rowing & Ski Erg": {
+                1: "These machines are technique-dependent. Learning proper form early saves you a lot of energy on race day.",
+                2: "Technique refinement and pacing practice will make these stations much more efficient."
             },
             "Recovery & Training Load": {
-                1: "Before adding training volume, work on sleep quality, hydration, and basic nutrition. Your body's ability to recover will determine how much training you can actually absorb.",
-                2: "Gradual loading is key. Add one session per week at a time. Prioritize sleep and post-workout nutrition. Consider tracking recovery metrics to learn your body's patterns.",
-                3: "You have a good base. Make sure your easy days are actually easy and your hard days have purpose. Recovery isn't passive. It's an active part of training.",
-                4: "Your recovery habits are supporting your training well. As you add Hyrox-specific work, monitor whether your existing recovery practices still hold up under the new training demands."
+                1: "Your body's ability to absorb training is the ceiling on everything else. Start here.",
+                2: "Building your recovery capacity will let you train harder and more often."
             },
-            "Grip & Carry Strength": {
-                1: "Start with dead hangs, farmer's carries with light dumbbells, and sandbag holds. Grip endurance is a trainable skill, but it takes time. Start now.",
-                2: "Your grip is the weak link. Add dedicated grip work: farmer's carries 2-3x per week, dead hangs, and towel pull-ups. Train grip when you're already fatigued to simulate race conditions.",
-                3: "Add loaded carries at race weight. Practice the farmer's carry distance (200m) in training. Focus on steady walking pace and efficient grip position rather than speed.",
-                4: "This is a strength for you. Maintain it by keeping carries in your program and practice transitioning smoothly between the carry and the next run segment."
+            "Grip & Loaded Carry": {
+                1: "Grip endurance is trainable but takes time. Start now so it's not a race-day surprise.",
+                2: "Your grip is a weak link. Dedicated carry work 2x/week will close this gap."
             },
             "Mental Toughness & Pacing": {
-                1: "Start by practicing staying in controlled discomfort. During hard efforts, focus on breathing and maintaining form rather than speed. Build your tolerance gradually.",
-                2: "Develop a race-day mental strategy: break each station into smaller chunks, use breathing cues, and practice positive self-talk during training. These skills are trainable.",
-                3: "Your biggest opportunity is learning to pace. Practice going out slower than you want to on the first 3-4 stations. The back half of Hyrox is where races are won or lost.",
-                4: "Mental game is strong. Use training to refine your pacing plan. Know your target times for each station and each run. Have a plan for when things hurt but you're on pace."
+                1: "Learning to work through discomfort is a skill. It can be trained just like strength.",
+                2: "Building a pacing strategy and practicing it under fatigue will change your race experience."
             },
             "Training Consistency": {
-                1: "Consistency matters more than intensity right now. Start with 2 sessions per week that you can commit to, then add a third when the habit is solid. Showing up is the foundation.",
-                2: "Build the habit first. Pick 3 non-negotiable training days per week. Keep sessions reasonable so you're not dreading them. Motivation fades, but routine sustains progress.",
-                3: "You're close to where you need to be. Protect your training schedule like an appointment. If you miss a day, don't try to make it up by doubling the next session.",
-                4: "Your consistency is your biggest asset. Make sure your training blocks have purpose and progression built in. Consistent training without a plan still leaves gains on the table."
+                1: "Consistency is the foundation everything else is built on. Start with a sustainable schedule.",
+                2: "Locking in a regular training rhythm is the single highest-leverage change you can make."
+            }
+        };
+        return notes[category]?.[score] || "This area needs focused attention in your training.";
+    }
+
+    function getCategoryTip(category, score, format, experience, goal) {
+        const isFirst = experience === 'first';
+        const isDoubles = format === 'doubles';
+        const isCompete = goal === 'compete';
+
+        const tips = {
+            "Running Endurance": {
+                1: "Start with a walk-run program and build up to running 2km continuously, then progress from there. Hyrox running doesn't need to be fast, but you need to be able to sustain it across 8 segments without walking." + (isDoubles ? " Even in Doubles, both partners run every segment. This is non-negotiable." : ""),
+                2: "You have a base to work with. Focus on extending your comfortable running distance by 10-15% each week. One easy longer run per week is your biggest lever right now." + (isFirst ? " Don't worry about speed. Build the volume first." : ""),
+                3: "You can run the distance. Now train for running under fatigue: practice running immediately after strength work to simulate what race day actually feels like. Your legs need to know how to move when they're already tired.",
+                4: "Your running base is solid." + (isCompete ? " Focus on pacing discipline: can you hold your target pace on run 7 the same as run 1? Practice negative splits on your 1km repeats." : " Maintain your base and practice running quality when fatigued. That's where races are made.")
+            },
+            "Sled Push & Pull": {
+                1: "Start with leg press, hip thrusts, or even pushing a car in a parking lot. The movement pattern is about hip extension and leg drive." + (isFirst ? " Don't overthink it. Just get familiar with the feeling of heavy pushing." : "") + (isDoubles ? " In Doubles, you can strategize who takes the sled. But both of you should have baseline competency." : ""),
+                2: "You know the feeling. Now build specific strength: heavy sled pushes for short distances (20-30m), rest, repeat. Focus on staying low and driving through your legs.",
+                3: "Add sled work 1-2x per week. Practice at race weight if you can access it. The key is learning to stay low and keep moving when fatigue is telling you to stand up.",
+                4: "You're strong here. Keep sled work in your program and practice transitioning from sled to run with minimal rest. That transition is where time is won or lost."
+            },
+            "Functional Strength": {
+                1: "Learn the movements first with light weight and low reps. Wall balls with a light med ball, walking lunges with bodyweight, and basic burpees. Movement quality before volume." + (isFirst ? " There's no rush. Getting these right now means you can train them harder later." : ""),
+                2: "Build volume gradually. Set a timer and practice working through small sets with short rest. The goal is sustainable output across the full station, not max effort for 30 seconds." + (isDoubles ? " In Doubles you'll each do full stations, so you can't rely on splitting this." : ""),
+                3: "You know the movements. Now train them back-to-back while fatigued. Run, then immediately hit a station. Your body needs to perform these when it's already tired, because on race day it will be.",
+                4: "You're well prepared here." + (isCompete ? " Know your target rep schemes and pacing for each station. Practice the full sequence. Competing means eliminating wasted time in transitions." : " Maintain this and focus on efficiency. How fast can you get through each station with the least energy cost?")
+            },
+            "Rowing & Ski Erg": {
+                1: "Watch technique videos for both machines. Bad technique wastes huge amounts of energy. Start with shorter efforts (500m) focused on form before building to 1,000m." + (isFirst ? " These are technique-dependent. Spending time here early pays off massively on race day." : ""),
+                2: "Technique is your biggest lever. Spend time on smooth, powerful strokes rather than fast ones. Practice 1,000m pieces at a sustainable pace and pay attention to your split consistency.",
+                3: "You can do the distance. Now refine your pacing: hold the same effort level from start to finish on 1,000m pieces. Consistency beats going out hard and dying." + (isDoubles ? " In Doubles, coordinate with your partner on who takes which machine. Play to each other's strengths." : ""),
+                4: "Strong." + (isCompete ? " Integrate these into longer sessions where you row/ski after other work. Race day is never a fresh 1,000m. Train accordingly." : " Maintain your technique and practice these after fatiguing work so your body knows what to expect.")
+            },
+            "Recovery & Training Load": {
+                1: "Before adding training volume, focus on sleep quality, hydration, and basic nutrition. Your body's ability to recover determines how much training you can actually absorb and benefit from.",
+                2: "Gradual loading is key. Add one session per week at a time. Prioritize sleep and post-training nutrition. Pay attention to what helps you bounce back and what doesn't.",
+                3: "You have a good base. Make sure your easy days are truly easy and your hard days have purpose. Recovery is an active part of training, not just the absence of it.",
+                4: "Your recovery supports your training well. As you layer in Hyrox-specific work, monitor whether your existing habits still hold up. Heavier training blocks may demand more attention to rest and nutrition."
+            },
+            "Grip & Loaded Carry": {
+                1: "Start with dead hangs, farmer's carries with light dumbbells, and holding heavy objects for time. Grip endurance is very trainable, but it takes consistent work. Start building it now." + (isDoubles ? " In Doubles, you can split carry stations strategically. But basic grip fitness helps everywhere." : ""),
+                2: "Your grip is a weak link. Add dedicated grip work: farmer's carries 2-3x per week, dead hangs after sessions, and towel-grip exercises. Train grip when you're already tired to simulate race conditions.",
+                3: "You can carry weight. Now add specificity: practice at race weights for the full distance. Focus on steady walking pace and finding a grip position that's efficient, not just strong.",
+                4: "This is a strength for you. Keep carries in your program and practice transitioning between carry stations and the next running segment smoothly."
+            },
+            "Mental Toughness & Pacing": {
+                1: "Start by practicing controlled discomfort. During hard efforts, focus on breathing and maintaining form rather than speed. Build your tolerance gradually. This is a trainable skill, not a personality trait." + (isFirst ? " First-time Hyrox athletes who learn to manage discomfort early have a dramatically better race experience." : ""),
+                2: "Develop a strategy for when things hurt: break each station into smaller chunks, use breathing cues, and practice positive self-talk during training. These tools need to be practiced before race day, not invented during it.",
+                3: "Your biggest opportunity is pacing." + (isCompete ? " Going out too hard early is the most common mistake in competitive Hyrox. Practice starting slower than feels natural on the first 3-4 stations. The back half is where races are won." : " Practice going out slower than you want to on the early stations. The discipline to hold back when you feel good is what lets you finish strong."),
+                4: "Mental game is strong." + (isCompete ? " Use training to lock in your race plan. Know your target times for each station and run. Have contingency plans for when things hurt but you're on pace." : " Use your composure as an advantage. Stay steady while others panic and fade.")
+            },
+            "Training Consistency": {
+                1: "Consistency matters more than intensity right now. Start with 2 sessions per week you can actually commit to, then add a third when it feels automatic. Showing up regularly is the foundation everything else is built on.",
+                2: "Build the habit first. Pick 3 non-negotiable training days. Keep sessions reasonable so you don't dread them. Motivation fades, but routine sustains progress.",
+                3: "You're close to where you need to be. Protect your training schedule. If you miss a day, don't double up the next one." + (isCompete ? " At 3x/week you can make real progress. 4x/week with purpose would be ideal for a competitive goal." : ""),
+                4: "Your consistency is your biggest asset." + (isCompete ? " Make sure every session has a purpose. Consistent training without a plan still leaves performance on the table." : " Make sure your training has progression built in. Showing up is step one. Progressing intentionally is step two.")
             }
         };
         return tips[category]?.[score] || "";
@@ -840,28 +855,29 @@
             return;
         }
 
-        // For now, we'll store the email in localStorage and show success
-        // Justin can connect this to his email service later
+        const ctxLen = contextQuestions.length;
         const quizData = {
             email: email,
-            scores: questions.map((q, i) => ({
+            context: {
+                format: getContextValue('format'),
+                experience: getContextValue('experience'),
+                timeline: getContextValue('timeline'),
+                goal: getContextValue('goal')
+            },
+            scores: scoredQuestions.map((q, i) => ({
                 category: q.category,
-                score: q.options[answers[i]].score,
-                answer: q.options[answers[i]].text
+                score: q.options[answers[ctxLen + i]].score,
+                answer: q.options[answers[ctxLen + i]].text
             })),
-            total: questions.reduce((sum, q, i) => sum + q.options[answers[i]].score, 0),
             timestamp: new Date().toISOString()
         };
 
-        // Store locally (will be replaced with email service integration)
         const stored = JSON.parse(localStorage.getItem('hyrox_quiz_leads') || '[]');
         stored.push(quizData);
         localStorage.setItem('hyrox_quiz_leads', JSON.stringify(stored));
 
         document.getElementById('email-form').style.display = 'none';
         document.getElementById('email-success').style.display = 'block';
-
-        // Also send to Justin via a simple webhook or form handler when available
         console.log('Quiz lead captured:', quizData);
     }
     </script>
