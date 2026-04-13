@@ -1066,6 +1066,91 @@
             }
         }
 
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-5);
+        }
+
+        .about-text p {
+            color: var(--ink);
+            opacity: 0.8;
+            line-height: 1.75;
+            margin-bottom: var(--space-3);
+            max-width: 680px;
+        }
+
+        .about-text p:first-child {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--deep-forest);
+            opacity: 1;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .about-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+            padding: var(--space-4);
+            background: var(--sand-surface);
+            border: 1px solid var(--stone-border);
+            border-radius: var(--radius-md);
+        }
+
+        .credential-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 180px;
+        }
+
+        .credential-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--slate);
+        }
+
+        .credential-value {
+            font-size: 0.9375rem;
+            color: var(--deep-forest);
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .about-text p:first-child {
+                font-size: 1.125rem;
+            }
+
+            .about-text p {
+                font-size: 0.9375rem;
+                margin-bottom: var(--space-2);
+            }
+
+            .about-credentials {
+                padding: var(--space-3);
+                gap: var(--space-2);
+            }
+
+            .credential-item {
+                min-width: 140px;
+            }
+
+            .credential-value {
+                font-size: 0.875rem;
+            }
+        }
+
         /* Animations */
         .fade-up {
             opacity: 0;
@@ -1082,6 +1167,7 @@
 <body>
     <nav id="nav">
         <a href="#" class="nav-logo">Justin the Practice</a>
+        <a href="#about" class="nav-link" style="margin-right: 16px;">About</a>
         <a href="#next-step" class="nav-link">Get Started</a>
     </nav>
 
@@ -1101,6 +1187,48 @@
                 </a>
                 <a href="#clarity-quiz" class="btn-secondary">General Training Clarity</a>
                 <a href="https://calendly.com/justin-the-practice/clarity-call" target="_blank" class="btn-secondary">Book a Free Clarity Call</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About / Background -->
+    <section class="about-section fade-up" id="about">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Background</p>
+                <h2>Who I Am</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I've been training since I was five years old.</p>
+                    <p>I started with competitive gymnastics, then moved through baseball, football, and eventually track and field, where I ran hurdles on a D1 scholarship at UTSA. Across four sports and 17 years of competition, I learned that performance is never just physical. How you think, recover, and make decisions under pressure matters as much as how strong or fast you are.</p>
+                    <p>I studied kinesiology with a concentration in exercise science and double minored in sociology and wellness. I'm an ACSM Certified Personal Trainer and hold a mindset certification through NCI. The academic foundation gave me the science. The years of competition gave me the rest.</p>
+                    <p>Today I coach because I've lived both sides: the discipline it takes to compete at a high level, and the awareness it takes to train sustainably for life. I also guide kayak tours in Crystal River, Florida, where I spend my days on the water with manatees and springs. That work keeps me grounded in the same things I coach: presence, patience, and showing up fully for whatever's in front of you.</p>
+                    <p>I'm not here to hand you a workout plan. I'm here to help you build the strength, clarity, and readiness to close the gap between who you are and who you know you can be.</p>
+                </div>
+                <div class="about-credentials">
+                    <div class="credential-item">
+                        <span class="credential-label">Education</span>
+                        <span class="credential-value">B.S. Kinesiology, Exercise Science</span>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-label">Minors</span>
+                        <span class="credential-value">Sociology &amp; Wellness</span>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-label">Certifications</span>
+                        <span class="credential-value">ACSM-CPT &middot; NCI Mindset</span>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-label">Athletic Background</span>
+                        <span class="credential-value">D1 Track &amp; Field (Hurdles), UTSA</span>
+                    </div>
+                    <div class="credential-item">
+                        <span class="credential-label">Sports</span>
+                        <span class="credential-value">Gymnastics &middot; Baseball &middot; Football &middot; Track</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1366,6 +1494,7 @@
     <footer class="container">
         <span class="footer-tagline">Justin the Practice</span>
         <div class="footer-links">
+            <a href="#about">About</a>
             <a href="#principles">Principles</a>
             <a href="#process">Process</a>
             <a href="#next-step">Get Started</a>
